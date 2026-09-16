@@ -1,0 +1,400 @@
+[gd_scene format=3 uid="uid://pksii8d5focd"]
+
+[sub_resource type="FontVariation" id="FontVariation_uchyk"]
+variation_transform = Transform2D(1, 0.405, 0, 1, 0, 0)
+baseline_offset = 0.175
+
+[node name="Control" type="Control" unique_id=464387620]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=2089414100]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=477889685]
+layout_mode = 2
+
+[node name="Info" type="PanelContainer" parent="MarginContainer/VBoxContainer" unique_id=2022033037]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Info" unique_id=231641238]
+layout_mode = 2
+
+[node name="Team #" type="Label" parent="MarginContainer/VBoxContainer/Info/HBoxContainer" unique_id=36071196]
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_colors/font_color = Color(0.9490196, 0.38039216, 0.27058825, 1)
+theme_override_font_sizes/font_size = 32
+text = "7034"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Period" type="Label" parent="MarginContainer/VBoxContainer/Info/HBoxContainer" unique_id=1084192950]
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_font_sizes/font_size = 48
+text = "AUTO"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Info/HBoxContainer" unique_id=1855972465]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_constants/separation = -12
+
+[node name="Time" type="Label" parent="MarginContainer/VBoxContainer/Info/HBoxContainer/VBoxContainer" unique_id=1218477276]
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_font_sizes/font_size = 32
+text = "3:45"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Time2" type="Label" parent="MarginContainer/VBoxContainer/Info/HBoxContainer/VBoxContainer" unique_id=1145167106]
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_font_sizes/font_size = 12
+text = "0:12 to TRAN"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Field" type="PanelContainer" parent="MarginContainer/VBoxContainer" unique_id=692622311]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Field" unique_id=1162604283]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="BlueZone" type="MarginContainer" parent="MarginContainer/VBoxContainer/Field/VBoxContainer" unique_id=2126647923]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 3.0
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Field/VBoxContainer/BlueZone" unique_id=183370544]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="GoodButton" type="Button" parent="MarginContainer/VBoxContainer/Field/VBoxContainer/BlueZone/HBoxContainer" unique_id=717351691]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.3254902, 0.627451, 0.9411765, 1)
+theme_override_colors/font_focus_color = Color(0.3254902, 0.627451, 0.9411765, 1)
+theme_override_colors/font_pressed_color = Color(0.3254902, 0.627451, 0.9411765, 1)
+theme_override_colors/font_hover_color = Color(0.3254902, 0.627451, 0.9411765, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.3254902, 0.627451, 0.9411765, 1)
+theme_override_colors/font_disabled_color = Color(0.3254902, 0.627451, 0.9411765, 1)
+theme_override_font_sizes/font_size = 64
+text = "+1"
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Field/VBoxContainer/BlueZone/HBoxContainer" unique_id=1361281934]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "15"
+
+[node name="BadButton" type="Button" parent="MarginContainer/VBoxContainer/Field/VBoxContainer/BlueZone/HBoxContainer" unique_id=511854917]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.3254902, 0.627451, 0.9411765, 1)
+theme_override_colors/font_focus_color = Color(0.3254902, 0.627451, 0.9411765, 1)
+theme_override_colors/font_pressed_color = Color(0.3254902, 0.627451, 0.9411765, 1)
+theme_override_colors/font_hover_color = Color(0.3254902, 0.627451, 0.9411765, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.3254902, 0.627451, 0.9411765, 1)
+theme_override_colors/font_disabled_color = Color(0.57254905, 0.7490196, 0.9411765, 0.31764707)
+theme_override_font_sizes/font_size = 64
+text = "-1"
+
+[node name="BlueSeperator" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Field/VBoxContainer" unique_id=1428650078]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 0
+
+[node name="LeftTrench" type="MarginContainer" parent="MarginContainer/VBoxContainer/Field/VBoxContainer/BlueSeperator" unique_id=1402258390]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_bottom = 22
+
+[node name="ColorRect2" type="ColorRect" parent="MarginContainer/VBoxContainer/Field/VBoxContainer/BlueSeperator/LeftTrench" unique_id=196415857]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color(0.32684293, 0.63035536, 0.94190216, 1)
+
+[node name="LeftBump" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Field/VBoxContainer/BlueSeperator" unique_id=981108994]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/VBoxContainer/Field/VBoxContainer/BlueSeperator/LeftBump" unique_id=533789692]
+layout_mode = 2
+size_flags_vertical = 3
+color = Color(0.28618222, 0.6806016, 0.9042398, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="MarginContainer/VBoxContainer/Field/VBoxContainer/BlueSeperator/LeftBump" unique_id=1295808746]
+layout_mode = 2
+size_flags_vertical = 3
+color = Color(0.20342648, 0.60952437, 0.8276536, 1)
+
+[node name="Hub" type="ColorRect" parent="MarginContainer/VBoxContainer/Field/VBoxContainer/BlueSeperator" unique_id=325029807]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color(0.3254902, 0.627451, 0.9411765, 1)
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/VBoxContainer/Field/VBoxContainer/BlueSeperator/Hub" unique_id=1966744841]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -24.421566
+offset_top = -21.5
+offset_right = 24.421566
+offset_bottom = 21.5
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.66562366, 0.81697327, 0.9849375, 1)
+
+[node name="RightBump" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Field/VBoxContainer/BlueSeperator" unique_id=563356119]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/VBoxContainer/Field/VBoxContainer/BlueSeperator/RightBump" unique_id=883361730]
+layout_mode = 2
+size_flags_vertical = 3
+color = Color(0.28618222, 0.6806016, 0.9042398, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="MarginContainer/VBoxContainer/Field/VBoxContainer/BlueSeperator/RightBump" unique_id=403023388]
+layout_mode = 2
+size_flags_vertical = 3
+color = Color(0.20342648, 0.60952437, 0.8276536, 1)
+
+[node name="RightTrench" type="MarginContainer" parent="MarginContainer/VBoxContainer/Field/VBoxContainer/BlueSeperator" unique_id=545063599]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_bottom = 22
+
+[node name="ColorRect2" type="ColorRect" parent="MarginContainer/VBoxContainer/Field/VBoxContainer/BlueSeperator/RightTrench" unique_id=1955221221]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color(0.3254902, 0.627451, 0.9411765, 1)
+
+[node name="NeutralZone" type="MarginContainer" parent="MarginContainer/VBoxContainer/Field/VBoxContainer" unique_id=867392327]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 3.5
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 32
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Field/VBoxContainer/NeutralZone" unique_id=48828672]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="GoodButton" type="Button" parent="MarginContainer/VBoxContainer/Field/VBoxContainer/NeutralZone/HBoxContainer" unique_id=1443648861]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 64
+text = "+1"
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Field/VBoxContainer/NeutralZone/HBoxContainer" unique_id=1447739940]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "584"
+
+[node name="BadButton" type="Button" parent="MarginContainer/VBoxContainer/Field/VBoxContainer/NeutralZone/HBoxContainer" unique_id=2121989681]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 64
+text = "-1"
+
+[node name="RedSeperator" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Field/VBoxContainer" unique_id=1701460841]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 0
+
+[node name="LeftTrench" type="MarginContainer" parent="MarginContainer/VBoxContainer/Field/VBoxContainer/RedSeperator" unique_id=932209065]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_bottom = 22
+
+[node name="ColorRect2" type="ColorRect" parent="MarginContainer/VBoxContainer/Field/VBoxContainer/RedSeperator/LeftTrench" unique_id=2062038336]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color(0.9483686, 0.38155803, 0.2699758, 1)
+
+[node name="LeftBump" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Field/VBoxContainer/RedSeperator" unique_id=1112814375]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/VBoxContainer/Field/VBoxContainer/RedSeperator/LeftBump" unique_id=1795416438]
+layout_mode = 2
+size_flags_vertical = 3
+color = Color(0.85801584, 0.2358137, 0.34999666, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="MarginContainer/VBoxContainer/Field/VBoxContainer/RedSeperator/LeftBump" unique_id=1032496872]
+layout_mode = 2
+size_flags_vertical = 3
+color = Color(0.9570275, 0.42397878, 0.48758096, 1)
+
+[node name="Hub" type="ColorRect" parent="MarginContainer/VBoxContainer/Field/VBoxContainer/RedSeperator" unique_id=1608709048]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color(0.9490196, 0.38039216, 0.27058825, 1)
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/VBoxContainer/Field/VBoxContainer/RedSeperator/Hub" unique_id=331322959]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -24.421566
+offset_top = -21.5
+offset_right = 24.421566
+offset_bottom = 21.5
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.9912024, 0.74638957, 0.69186354, 1)
+
+[node name="RightBump" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Field/VBoxContainer/RedSeperator" unique_id=1135018050]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/VBoxContainer/Field/VBoxContainer/RedSeperator/RightBump" unique_id=491910301]
+layout_mode = 2
+size_flags_vertical = 3
+color = Color(0.85801584, 0.2358137, 0.34999666, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="MarginContainer/VBoxContainer/Field/VBoxContainer/RedSeperator/RightBump" unique_id=1158540630]
+layout_mode = 2
+size_flags_vertical = 3
+color = Color(0.9570275, 0.42397878, 0.48758096, 1)
+
+[node name="RightTrench" type="MarginContainer" parent="MarginContainer/VBoxContainer/Field/VBoxContainer/RedSeperator" unique_id=312411478]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_bottom = 22
+
+[node name="ColorRect2" type="ColorRect" parent="MarginContainer/VBoxContainer/Field/VBoxContainer/RedSeperator/RightTrench" unique_id=820924243]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color(0.9490196, 0.38039216, 0.27058825, 1)
+
+[node name="RedZone" type="MarginContainer" parent="MarginContainer/VBoxContainer/Field/VBoxContainer" unique_id=106494856]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 3.0
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Field/VBoxContainer/RedZone" unique_id=1066424357]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="GoodButton" type="Button" parent="MarginContainer/VBoxContainer/Field/VBoxContainer/RedZone/HBoxContainer" unique_id=1687935482]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.9490196, 0.38039216, 0.27058825, 1)
+theme_override_colors/font_focus_color = Color(0.9490196, 0.38039216, 0.27058825, 1)
+theme_override_colors/font_pressed_color = Color(0.9490196, 0.38039216, 0.27058825, 1)
+theme_override_colors/font_hover_color = Color(0.9490196, 0.38039216, 0.27058825, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.9490196, 0.38039216, 0.27058825, 1)
+theme_override_colors/font_disabled_color = Color(0.9490196, 0.38039216, 0.27058825, 0.20392157)
+theme_override_font_sizes/font_size = 64
+text = "+1"
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Field/VBoxContainer/RedZone/HBoxContainer" unique_id=1716005685]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "15"
+
+[node name="BadButton" type="Button" parent="MarginContainer/VBoxContainer/Field/VBoxContainer/RedZone/HBoxContainer" unique_id=1616422795]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.9490196, 0.38039216, 0.27058825, 1)
+theme_override_colors/font_focus_color = Color(0.9490196, 0.38039216, 0.27058825, 1)
+theme_override_colors/font_pressed_color = Color(0.9490196, 0.38039216, 0.27058825, 1)
+theme_override_colors/font_hover_color = Color(0.9490196, 0.38039216, 0.27058825, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.9490196, 0.38039216, 0.27058825, 1)
+theme_override_colors/font_disabled_color = Color(0.95, 0.66499996, 0.608, 0.20392157)
+theme_override_font_sizes/font_size = 64
+text = "-1"
+
+[node name="Controls" type="PanelContainer" parent="MarginContainer/VBoxContainer" unique_id=1530453832]
+layout_mode = 2
+
+[node name="Manual" type="MarginContainer" parent="MarginContainer/VBoxContainer/Controls" unique_id=1416236047]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_right = 16
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Controls/Manual" unique_id=191776863]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Back" type="Button" parent="MarginContainer/VBoxContainer/Controls/Manual/HBoxContainer" unique_id=1259930296]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = " < "
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Controls/Manual/HBoxContainer" unique_id=164573201]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = -18
+
+[node name="Switch" type="Button" parent="MarginContainer/VBoxContainer/Controls/Manual/HBoxContainer/VBoxContainer" unique_id=1924933392]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 32
+text = "AUTONOMOUS"
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Controls/Manual/HBoxContainer/VBoxContainer" unique_id=586994909]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 0.37254903)
+theme_override_fonts/font = SubResource("FontVariation_uchyk")
+theme_override_font_sizes/font_size = 12
+text = "Manual - Click to switch to Auto Switching"
+horizontal_alignment = 1
+
+[node name="Next" type="Button" parent="MarginContainer/VBoxContainer/Controls/Manual/HBoxContainer" unique_id=287416553]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = " > "
+
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer/Controls" unique_id=1826591674]
+visible = false
+custom_minimum_size = Vector2(0, 53)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.88, 0.88, 0.88, 0.49803922)
+theme_override_font_sizes/font_size = 20
+text = "Auto Switching - Click to switch to Manual"
