@@ -89,7 +89,7 @@ theme_override_constants/margin_bottom = 16
 layout_mode = 2
 theme_override_constants/separation = 16
 
-[node name="GoodButton" type="Button" parent="MarginContainer/VBoxContainer/Field/VBoxContainer/BlueZone/HBoxContainer" unique_id=717351691]
+[node name="DefendButton" type="Button" parent="MarginContainer/VBoxContainer/Field/VBoxContainer/BlueZone/HBoxContainer" unique_id=717351691]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/line_spacing = -20
