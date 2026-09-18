@@ -3,8 +3,9 @@
 [ext_resource type="FontFile" uid="uid://dm7ekpanhpagu" path="res://Ethnocentric-Regular.otf" id="1_3vi8l"]
 [ext_resource type="Script" uid="uid://g5h1kgvq6qor" path="res://base.gd" id="1_rpg24"]
 
-[sub_resource type="Theme" id="Theme_rpg24"]
-default_font = ExtResource("1_3vi8l")
+[sub_resource type="FontVariation" id="FontVariation_tpea4"]
+base_font = ExtResource("1_3vi8l")
+baseline_offset = 0.19
 
 [sub_resource type="FontVariation" id="FontVariation_21bcp"]
 
@@ -36,17 +37,15 @@ _source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\">
 base_scale = 2.0
 
 [sub_resource type="FontVariation" id="FontVariation_3vi8l"]
-base_font = ExtResource("1_3vi8l")
 variation_transform = Transform2D(1, 0.395, 0, 1, 0, 0)
 
-[node name="Control" type="Control" unique_id=464387620 node_paths=PackedStringArray("during_game", "post_game", "team_num", "period", "time_left", "time_until", "blue_gets_first", "opponent_box", "defend_button", "climb_option", "auto_box", "no_auto", "climb_auto", "blue_got_first", "neutral_points_box", "neutral_plus", "neutral_count", "neutral_minus", "who_got_label", "red_gets_first", "red_points_box", "red_plus", "red_count", "red_minus", "red_got_first", "auto_menu", "menu_back", "auto_switch", "menu_next", "manual_switch", "robot_disabled", "side_climb", "alliance_rank", "scouting_confidence", "drive_skill", "defense_skill", "accuracy", "comments", "done", "timer")]
+[node name="Control" type="Control" unique_id=464387620 node_paths=PackedStringArray("during_game", "post_game", "team_num", "period", "time_left", "time_until", "blue_gets_first", "opponent_box", "defend_button", "climb_option", "auto_box", "no_auto", "climb_auto", "blue_got_first", "neutral_points_box", "neutral_plus", "neutral_count", "neutral_minus", "who_got_label", "select_who_got", "red_gets_first", "red_points_box", "red_plus", "red_count", "red_minus", "red_got_first", "auto_menu", "menu_back", "auto_switch", "menu_next", "manual_switch", "robot_disabled", "side_climb", "alliance_rank", "scouting_confidence", "drive_skill", "defense_skill", "accuracy", "comments", "done", "timer")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = SubResource("Theme_rpg24")
 script = ExtResource("1_rpg24")
 during_game = NodePath("MarginContainer/VBoxContainer/Field")
 post_game = NodePath("MarginContainer/VBoxContainer/PostGame")
@@ -67,6 +66,7 @@ neutral_plus = NodePath("MarginContainer/VBoxContainer/Field/VBoxContainer/Neutr
 neutral_count = NodePath("MarginContainer/VBoxContainer/Field/VBoxContainer/NeutralZone/PointBox/VBoxContainer/Count")
 neutral_minus = NodePath("MarginContainer/VBoxContainer/Field/VBoxContainer/NeutralZone/PointBox/MinusButton")
 who_got_label = NodePath("MarginContainer/VBoxContainer/Field/VBoxContainer/NeutralZone/WhoGotLabel")
+select_who_got = NodePath("MarginContainer/VBoxContainer/Field/VBoxContainer/NeutralZone/SelectWhoGot")
 red_gets_first = NodePath("MarginContainer/VBoxContainer/Field/VBoxContainer/RedZone/VBoxContainer/RedGetsFirst")
 red_points_box = NodePath("MarginContainer/VBoxContainer/Field/VBoxContainer/RedZone/VBoxContainer/PointsBox")
 red_plus = NodePath("MarginContainer/VBoxContainer/Field/VBoxContainer/RedZone/VBoxContainer/PointsBox/PlusButton")
@@ -118,6 +118,7 @@ vertical_alignment = 1
 [node name="Period" type="Label" parent="MarginContainer/VBoxContainer/Info/HBoxContainer" unique_id=1084192950]
 layout_mode = 2
 size_flags_horizontal = 6
+theme_override_fonts/font = SubResource("FontVariation_tpea4")
 theme_override_font_sizes/font_size = 36
 text = "AUTO"
 horizontal_alignment = 1
@@ -167,6 +168,7 @@ theme_override_constants/margin_bottom = 16
 layout_mode = 2
 
 [node name="BlueGetsFirst" type="Button" parent="MarginContainer/VBoxContainer/Field/VBoxContainer/BlueZone/VBoxContainer" unique_id=265651398]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_colors/font_color = Color(0.3254902, 0.627451, 0.9411765, 1)
@@ -180,6 +182,7 @@ disabled = true
 text = "BLUE GETS FIRST SHIFT"
 
 [node name="OpponentBox" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Field/VBoxContainer/BlueZone/VBoxContainer" unique_id=1025338963]
+visible = false
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = 16
@@ -333,6 +336,7 @@ theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 32
 
 [node name="PointBox" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Field/VBoxContainer/NeutralZone" unique_id=48828672]
+visible = false
 layout_mode = 2
 theme_override_constants/separation = 16
 
@@ -379,6 +383,16 @@ theme_override_constants/line_spacing = -6
 theme_override_font_sizes/font_size = 48
 text = "WHO GOT
 FIRST SHIFT"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="SelectWhoGot" type="Label" parent="MarginContainer/VBoxContainer/Field/VBoxContainer/NeutralZone" unique_id=1834087890]
+custom_minimum_size = Vector2(2, 0)
+layout_mode = 2
+theme_override_constants/line_spacing = -16
+theme_override_font_sizes/font_size = 32
+text = "GO BACK & SAY
+WHO GOT FIRST SHIFT"
 horizontal_alignment = 1
 autowrap_mode = 3
 
@@ -475,6 +489,7 @@ theme_override_constants/margin_bottom = 16
 layout_mode = 2
 
 [node name="PointsBox" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Field/VBoxContainer/RedZone/VBoxContainer" unique_id=1066424357]
+visible = false
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = 16
@@ -512,6 +527,7 @@ theme_override_font_sizes/font_size = 64
 text = "-5"
 
 [node name="RedGetsFirst" type="Button" parent="MarginContainer/VBoxContainer/Field/VBoxContainer/RedZone/VBoxContainer" unique_id=672303268]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_colors/font_color = Color(0.9490196, 0.38039216, 0.27058825, 1)
@@ -765,7 +781,7 @@ layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 0.37254903)
 theme_override_fonts/font = SubResource("FontVariation_3vi8l")
 theme_override_font_sizes/font_size = 12
-text = "Manual - PRESS FOR AUTO"
+text = "MANUAL - PRESS FOR AUTO"
 horizontal_alignment = 1
 
 [node name="Next" type="Button" parent="MarginContainer/VBoxContainer/Controls/Manual/HBoxContainer" unique_id=287416553]

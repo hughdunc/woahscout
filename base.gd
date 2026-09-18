@@ -22,6 +22,7 @@ extends Control
 @export var neutral_count: Label
 @export var neutral_minus: Button
 @export var who_got_label: Label
+@export var select_who_got: Label
 
 @export var red_gets_first: Button
 @export var red_points_box: Control
@@ -200,11 +201,11 @@ func get_auto_switch_name(menu: MatchMenu) -> String:
 		MatchMenu.WHO_GOT_FIRST:
 			return "WHO SHIFT 1"
 		MatchMenu.RED_SHIFT_1:
-			return "SHIFT 1" if first_shift == "red" else "SHIFT 2"
+			return "SHIFT 2" if first_shift == "blue" else "SHIFT 1"
 		MatchMenu.BLUE_SHIFT_1:
 			return "SHIFT 1" if first_shift == "blue" else "SHIFT 2"
 		MatchMenu.RED_SHIFT_2:
-			return "SHIFT 3" if first_shift == "red" else "SHIFT 4"
+			return "SHIFT 4" if first_shift == "blue" else "SHIFT 3"
 		MatchMenu.BLUE_SHIFT_2:
 			return "SHIFT 3" if first_shift == "blue" else "SHIFT 4"
 		MatchMenu.ENDGAME:
@@ -218,11 +219,22 @@ func load_menu(menu: MatchMenu):
 	auto_switch.text = get_auto_switch_name(menu)
 	
 	var c = menu_configs_red[menu]
-	for n in c["visible"]:
-		n.visible = true
-	for n in c["hidden"]:
-		n.visible = false
-		
+	var fs_no = first_shift == "" and menu in [MatchMenu.RED_SHIFT_1, MatchMenu.BLUE_SHIFT_1, MatchMenu.BLUE_SHIFT_2, MatchMenu.RED_SHIFT_2]
+	if fs_no:
+		for n in c["visible"]:
+				n.visible = false
+		for n in c["hidden"]:
+			n.visible = false
+		during_game.visible = true
+		select_who_got.visible = true
+	else:
+		for n in c["visible"]:
+				n.visible = true
+		for n in c["hidden"]:
+			n.visible = false
+		select_who_got.visible = false
+	
+	
 	update_points()
 
 func _on_menu_next_pressed():
@@ -231,6 +243,8 @@ func _on_menu_next_pressed():
 	if current_index != -1:
 		var next_index = (current_index + 1) % order.size()
 		load_menu(order[next_index])
+	else:
+		load_menu(order[0])
 
 func _on_menu_back_pressed():
 	var order = get_menu_order()
@@ -238,6 +252,8 @@ func _on_menu_back_pressed():
 	if current_index != -1:
 		var prev_index = (current_index - 1 + order.size()) % order.size()
 		load_menu(order[prev_index])
+	else:
+		load_menu(order[0])
 
 
 func _ready():
@@ -361,6 +377,11 @@ func _blue_first():
 	blue_got_first.disabled = true
 	red_gets_first.disabled = false
 	red_got_first.disabled = false
+	
+	if current_menu == MatchMenu.WHO_GOT_FIRST:
+		load_menu(MatchMenu.BLUE_SHIFT_1)
+	else:
+		load_menu(current_menu)
 
 func _red_first():
 	first_shift = "red"
@@ -368,6 +389,11 @@ func _red_first():
 	blue_got_first.disabled = false
 	red_gets_first.disabled = true
 	red_got_first.disabled = true
+	
+	if current_menu == MatchMenu.WHO_GOT_FIRST:
+		load_menu(MatchMenu.RED_SHIFT_1)
+	else:
+		load_menu(current_menu)
 
 func format_time(total_seconds: float) -> String:
 	var minutes: int = int(total_seconds) / 60
