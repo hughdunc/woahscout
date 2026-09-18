@@ -154,15 +154,90 @@ var ends = {
 	MatchPeriod.POST_GAME: 9999,
 }
 
+func get_menu_order() -> Array:
+	if first_shift == "red":
+		return [
+			MatchMenu.AUTO,
+			MatchMenu.TRANSITION,
+			MatchMenu.RED_SHIFT_1,
+			MatchMenu.BLUE_SHIFT_1,
+			MatchMenu.RED_SHIFT_2,
+			MatchMenu.BLUE_SHIFT_2,
+			MatchMenu.ENDGAME,
+			MatchMenu.POST_GAME
+		]
+	elif first_shift == "blue":
+		return [
+			MatchMenu.AUTO,
+			MatchMenu.TRANSITION,
+			MatchMenu.BLUE_SHIFT_1,
+			MatchMenu.RED_SHIFT_1,
+			MatchMenu.BLUE_SHIFT_2,
+			MatchMenu.RED_SHIFT_2,
+			MatchMenu.ENDGAME,
+			MatchMenu.POST_GAME
+		]
+	else:
+		# Default order if first shift hasn't been chosen yet
+		return [
+			MatchMenu.AUTO,
+			MatchMenu.TRANSITION,
+			MatchMenu.WHO_GOT_FIRST,
+			MatchMenu.RED_SHIFT_1,
+			MatchMenu.BLUE_SHIFT_1,
+			MatchMenu.RED_SHIFT_2,
+			MatchMenu.BLUE_SHIFT_2,
+			MatchMenu.ENDGAME,
+			MatchMenu.POST_GAME
+		]
+
+func get_auto_switch_name(menu: MatchMenu) -> String:
+	match menu:
+		MatchMenu.AUTO:
+			return "AUTONOMOUS"
+		MatchMenu.TRANSITION:
+			return "TRANSITION"
+		MatchMenu.WHO_GOT_FIRST:
+			return "WHO SHIFT 1"
+		MatchMenu.RED_SHIFT_1:
+			return "SHIFT 1" if first_shift == "red" else "SHIFT 2"
+		MatchMenu.BLUE_SHIFT_1:
+			return "SHIFT 1" if first_shift == "blue" else "SHIFT 2"
+		MatchMenu.RED_SHIFT_2:
+			return "SHIFT 3" if first_shift == "red" else "SHIFT 4"
+		MatchMenu.BLUE_SHIFT_2:
+			return "SHIFT 3" if first_shift == "blue" else "SHIFT 4"
+		MatchMenu.ENDGAME:
+			return "ENDGAME"
+		MatchMenu.POST_GAME:
+			return "POST GAME"
+	return "MENU"
+
 func load_menu(menu: MatchMenu):
+	current_menu = menu
+	auto_switch.text = get_auto_switch_name(menu)
+	
 	var c = menu_configs_red[menu]
-	auto_switch.text = c["name"]
 	for n in c["visible"]:
 		n.visible = true
 	for n in c["hidden"]:
 		n.visible = false
-	current_menu = menu
+		
 	update_points()
+
+func _on_menu_next_pressed():
+	var order = get_menu_order()
+	var current_index = order.find(current_menu)
+	if current_index != -1:
+		var next_index = (current_index + 1) % order.size()
+		load_menu(order[next_index])
+
+func _on_menu_back_pressed():
+	var order = get_menu_order()
+	var current_index = order.find(current_menu)
+	if current_index != -1:
+		var prev_index = (current_index - 1 + order.size()) % order.size()
+		load_menu(order[prev_index])
 
 
 func _ready():
@@ -279,16 +354,6 @@ func update_points():
 		climb_auto.button_pressed = stats[current_menu]["climb"] > 0
 	if defend_button.is_visible_in_tree():
 		defend_button.text = "HOLD WHILE DEFENDING\n" + format_time(ceil(stats[current_menu]["defended"]))
-
-func _on_menu_next_pressed():
-	var total_menus = MatchMenu.size()
-	var next_index = (int(current_menu) + 1) % total_menus
-	load_menu(next_index as MatchMenu)
-
-func _on_menu_back_pressed():
-	var total_menus = MatchMenu.size()
-	var prev_index = (int(current_menu) - 1 + total_menus) % total_menus
-	load_menu(prev_index as MatchMenu)
 
 func _blue_first():
 	first_shift = "blue"

@@ -6,6 +6,8 @@
 [sub_resource type="Theme" id="Theme_rpg24"]
 default_font = ExtResource("1_3vi8l")
 
+[sub_resource type="FontVariation" id="FontVariation_21bcp"]
+
 [sub_resource type="DPITexture" id="DPITexture_g5ejs"]
 _source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\"><rect width=\"14\" height=\"14\" x=\"1\" y=\"1\" fill=\"#fff\" fill-opacity=\".75\" rx=\"2.333\"/><path fill=\"#1a1a1a\" d=\"m11.5 3.75-5.6 5.6-1.7-1.7-1.5 1.5 3.2 3.2 7.1-7.1z\"/></svg>
 "
@@ -125,7 +127,7 @@ vertical_alignment = 1
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
-theme_override_constants/separation = -8
+theme_override_constants/separation = -12
 
 [node name="Time" type="Label" parent="MarginContainer/VBoxContainer/Info/HBoxContainer/VBoxContainer" unique_id=1218477276]
 layout_mode = 2
@@ -138,7 +140,8 @@ vertical_alignment = 1
 [node name="Until" type="Label" parent="MarginContainer/VBoxContainer/Info/HBoxContainer/VBoxContainer" unique_id=1145167106]
 layout_mode = 2
 size_flags_horizontal = 6
-theme_override_font_sizes/font_size = 10
+theme_override_fonts/font = SubResource("FontVariation_21bcp")
+theme_override_font_sizes/font_size = 12
 text = "0:12 to TRAN"
 horizontal_alignment = 1
 vertical_alignment = 1
