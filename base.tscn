@@ -791,7 +791,7 @@ text = " > "
 
 [node name="Button" type="Button" parent="MarginContainer/VBoxContainer/Controls" unique_id=1826591674]
 visible = false
-custom_minimum_size = Vector2(0, 39)
+custom_minimum_size = Vector2(0, 53)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.88, 0.88, 0.88, 0.49803922)
 theme_override_font_sizes/font_size = 20
