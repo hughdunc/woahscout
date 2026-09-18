@@ -16,7 +16,7 @@ base_scale = 2.0
 variation_transform = Transform2D(1, 0.405, 0, 1, 0, 0)
 baseline_offset = 0.175
 
-[node name="Control" type="Control" unique_id=464387620 node_paths=PackedStringArray("team_num", "period", "time_left", "time_until", "blue_gets_first", "opponent_box", "defend_button", "climb_option", "auto_box", "no_auto", "climb_auto", "blue_got_first", "neutral_points_box", "neutral_plus", "neutral_count", "neutral_minus", "who_got_label", "red_gets_first", "red_points_box", "red_plus", "red_count", "red_minus", "red_got_first", "menu_back", "auto_menu", "menu_next", "manual_menu", "timer")]
+[node name="Control" type="Control" unique_id=464387620 node_paths=PackedStringArray("team_num", "period", "time_left", "time_until", "blue_gets_first", "opponent_box", "defend_button", "climb_option", "auto_box", "no_auto", "climb_auto", "blue_got_first", "neutral_points_box", "neutral_plus", "neutral_count", "neutral_minus", "who_got_label", "red_gets_first", "red_points_box", "red_plus", "red_count", "red_minus", "red_got_first", "auto_menu", "menu_back", "auto_switch", "menu_next", "manual_switch", "timer")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -47,10 +47,11 @@ red_plus = NodePath("MarginContainer/VBoxContainer/Field/VBoxContainer/RedZone/V
 red_count = NodePath("MarginContainer/VBoxContainer/Field/VBoxContainer/RedZone/VBoxContainer/PointsBox/Count")
 red_minus = NodePath("MarginContainer/VBoxContainer/Field/VBoxContainer/RedZone/VBoxContainer/PointsBox/MinusButton")
 red_got_first = NodePath("MarginContainer/VBoxContainer/Field/VBoxContainer/RedZone/RedGotFirst")
+auto_menu = NodePath("MarginContainer/VBoxContainer/Controls/Manual/HBoxContainer")
 menu_back = NodePath("MarginContainer/VBoxContainer/Controls/Manual/HBoxContainer/Back")
-auto_menu = NodePath("MarginContainer/VBoxContainer/Controls/Manual/HBoxContainer/VBoxContainer/Switch")
+auto_switch = NodePath("MarginContainer/VBoxContainer/Controls/Manual/HBoxContainer/VBoxContainer/Switch")
 menu_next = NodePath("MarginContainer/VBoxContainer/Controls/Manual/HBoxContainer/Next")
-manual_menu = NodePath("MarginContainer/VBoxContainer/Controls/Button")
+manual_switch = NodePath("MarginContainer/VBoxContainer/Controls/Button")
 timer = NodePath("Timer")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=2089414100]
