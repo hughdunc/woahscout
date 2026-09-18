@@ -1,5 +1,8 @@
 extends Control
 
+@export var during_game: Control
+@export var post_game: Control
+
 @export var team_num: Label
 @export var period: Label
 @export var time_left: Label
@@ -33,6 +36,17 @@ extends Control
 @export var menu_next: Button
 @export var manual_switch: Button
 
+@export var robot_disabled: CheckBox
+@export var side_climb: CheckBox
+@export var alliance_rank: OptionButton
+@export var scouting_confidence: OptionButton
+@export var drive_skill: OptionButton
+@export var defense_skill: OptionButton
+@export var accuracy: OptionButton
+@export var comments: TextEdit
+
+@export var done: Button
+
 @export var timer: Timer
 
 enum MatchMenu {
@@ -43,7 +57,8 @@ enum MatchMenu {
 	BLUE_SHIFT_1,
 	RED_SHIFT_2,
 	BLUE_SHIFT_2,
-	ENDGAME
+	ENDGAME,
+	POST_GAME
 }
 
 enum MatchPeriod {
@@ -53,7 +68,8 @@ enum MatchPeriod {
 	SHIFT_2,
 	SHIFT_3,
 	SHIFT_4,
-	ENDGAME
+	ENDGAME,
+	POST_GAME
 }
 
 
@@ -64,7 +80,8 @@ var short_names = {
 	MatchPeriod.SHIFT_2: "SHIFT 2",
 	MatchPeriod.SHIFT_3: "SHIFT 3",
 	MatchPeriod.SHIFT_4: "SHIFT 4",
-	MatchPeriod.ENDGAME: "END"
+	MatchPeriod.ENDGAME: "END",
+	MatchPeriod.POST_GAME: "DONE"
 }
 
 var auto_screen_switch = false
@@ -113,6 +130,16 @@ var stats = {
 		"shuttled": 0,
 		"scored": 0,
 		"climb": 0,
+	},
+	MatchMenu.POST_GAME: {
+		"robot_disabled": false,
+		"side_climb": false,
+		"alliance_rank": 1,
+		"scouting_confidence": "Caught Most",
+		"drive_skill": 0,
+		"defense_skill": 0,
+		"accuracy": 0,
+		"comments": ""
 	}
 }
 
@@ -123,7 +150,8 @@ var ends = {
 	MatchPeriod.SHIFT_2: 80,
 	MatchPeriod.SHIFT_3: 105,
 	MatchPeriod.SHIFT_4: 130,
-	MatchPeriod.ENDGAME: 160
+	MatchPeriod.ENDGAME: 160,
+	MatchPeriod.POST_GAME: 9999,
 }
 
 func load_menu(menu: MatchMenu):
@@ -141,44 +169,49 @@ func _ready():
 	menu_configs_red = {
 		MatchMenu.AUTO: {
 			"name": "AUTONOMOUS",
-			"visible": [auto_box, neutral_plus, neutral_count, neutral_points_box, red_points_box, neutral_minus, red_plus, red_count, red_minus],
-			"hidden": [opponent_box, blue_gets_first, red_gets_first, blue_got_first, who_got_label, red_got_first],
+			"visible": [during_game, auto_box, neutral_plus, neutral_count, neutral_points_box, red_points_box, neutral_minus, red_plus, red_count, red_minus, no_auto, climb_auto],
+			"hidden": [post_game, opponent_box, blue_gets_first, red_gets_first, blue_got_first, who_got_label, red_got_first],
 		},
 		MatchMenu.TRANSITION: {
 			"name": "TRANSITION",
-			"visible": [opponent_box, blue_gets_first, red_gets_first, defend_button, neutral_plus, neutral_count, neutral_points_box, red_points_box, neutral_minus, red_plus, red_count, red_minus],
-			"hidden": [climb_option, auto_box, blue_got_first, who_got_label, red_got_first],
+			"visible": [during_game, opponent_box, blue_gets_first, red_gets_first, defend_button, neutral_plus, neutral_count, neutral_points_box, red_points_box, neutral_minus, red_plus, red_count, red_minus],
+			"hidden": [post_game, climb_option, auto_box, blue_got_first, who_got_label, red_got_first],
 		},
 		MatchMenu.WHO_GOT_FIRST: {
 			"name": "WHO GOT FIRST",
-			"visible": [blue_got_first, who_got_label, red_got_first],
-			"hidden": [opponent_box, defend_button, blue_gets_first, red_gets_first, neutral_plus, neutral_count, neutral_points_box, red_points_box, neutral_minus, red_plus, red_count, red_minus, climb_option, auto_box],
+			"visible": [during_game, blue_got_first, who_got_label, red_got_first],
+			"hidden": [post_game, opponent_box, defend_button, blue_gets_first, red_gets_first, neutral_plus, neutral_count, neutral_points_box, red_points_box, neutral_minus, red_plus, red_count, red_minus, climb_option, auto_box],
 		},
 		MatchMenu.RED_SHIFT_1: {
 			"name": "RED SHIFT 1",
-			"visible": [opponent_box, defend_button, neutral_plus, neutral_count, neutral_points_box, red_points_box, neutral_minus, red_plus, red_count, red_minus],
-			"hidden": [climb_option, auto_box, blue_gets_first, red_gets_first, blue_got_first, who_got_label, red_got_first],
+			"visible": [during_game, opponent_box, defend_button, neutral_plus, neutral_count, neutral_points_box, red_points_box, neutral_minus, red_plus, red_count, red_minus],
+			"hidden": [post_game, climb_option, auto_box, blue_gets_first, red_gets_first, blue_got_first, who_got_label, red_got_first],
 		},
 		MatchMenu.BLUE_SHIFT_1: {
 			"name": "BLUE SHIFT 1",
-			"visible": [opponent_box, defend_button, neutral_plus, neutral_count, neutral_points_box, neutral_minus, red_plus, red_count, red_minus],
-			"hidden": [climb_option, auto_box, blue_gets_first, red_gets_first, blue_got_first, who_got_label, red_got_first, red_points_box],
+			"visible": [during_game, opponent_box, defend_button, neutral_plus, neutral_count, neutral_points_box, neutral_minus, red_plus, red_count, red_minus],
+			"hidden": [post_game, climb_option, auto_box, blue_gets_first, red_gets_first, blue_got_first, who_got_label, red_got_first, red_points_box],
 		},
 		MatchMenu.RED_SHIFT_2: {
 			"name": "RED SHIFT 2",
-			"visible": [opponent_box, defend_button, neutral_plus, neutral_count, neutral_points_box, red_points_box, neutral_minus, red_plus, red_count, red_minus],
-			"hidden": [climb_option, auto_box, blue_gets_first, red_gets_first, blue_got_first, who_got_label, red_got_first],
+			"visible": [during_game, opponent_box, defend_button, neutral_plus, neutral_count, neutral_points_box, red_points_box, neutral_minus, red_plus, red_count, red_minus],
+			"hidden": [post_game, climb_option, auto_box, blue_gets_first, red_gets_first, blue_got_first, who_got_label, red_got_first],
 		},
 		MatchMenu.BLUE_SHIFT_2: {
 			"name": "BLUE SHIFT 2",
-			"visible": [opponent_box, defend_button, neutral_plus, neutral_count, neutral_points_box, neutral_minus, red_plus, red_count, red_minus],
-			"hidden": [climb_option, auto_box, blue_gets_first, red_gets_first, blue_got_first, who_got_label, red_got_first, red_points_box],
+			"visible": [during_game, opponent_box, defend_button, neutral_plus, neutral_count, neutral_points_box, neutral_minus, red_plus, red_count, red_minus],
+			"hidden": [post_game, climb_option, auto_box, blue_gets_first, red_gets_first, blue_got_first, who_got_label, red_got_first, red_points_box],
 		},
 		MatchMenu.ENDGAME: {
 			"name": "ENDGAME",
-			"visible": [opponent_box, climb_option, defend_button, neutral_plus, neutral_count, neutral_points_box, red_points_box, neutral_minus, red_plus, red_count, red_minus],
-			"hidden": [auto_box, blue_got_first, blue_gets_first, red_gets_first, who_got_label, red_got_first],
+			"visible": [during_game, opponent_box, climb_option, defend_button, neutral_plus, neutral_count, neutral_points_box, red_points_box, neutral_minus, red_plus, red_count, red_minus],
+			"hidden": [post_game, auto_box, blue_got_first, blue_gets_first, red_gets_first, who_got_label, red_got_first],
 		},
+		MatchMenu.POST_GAME: {
+			"name": "POST GAME",
+			"visible": [post_game],
+			"hidden": [during_game, blue_gets_first, opponent_box, defend_button, climb_option, auto_box, no_auto, climb_auto, blue_got_first, neutral_points_box, neutral_plus, neutral_count, neutral_minus, who_got_label, red_gets_first, red_points_box, red_plus, red_count, red_minus, red_got_first],
+		}
 	}
 	
 	load_menu(MatchMenu.AUTO)
@@ -199,10 +232,22 @@ func _ready():
 	red_minus.pressed.connect(func(): change_points("scored", -5))
 	neutral_plus.pressed.connect(func(): change_points("shuttled", 5))
 	neutral_minus.pressed.connect(func(): change_points("shuttled", -5))
-	climb_option.item_selected.connect(func(i): change_points("climb", i))
+	climb_option.item_selected.connect(func(i): change_bool("climb", i))
 	no_auto.toggled.connect(func(on): change_bool("no_auto", on))
 	climb_auto.toggled.connect(func(on): change_bool("climb", 1 if on else 0))
+	
+	robot_disabled.toggled.connect(func(on): change_bool("robot_disabled", on))
+	side_climb.toggled.connect(func(on): change_bool("side_climb", on))
+	alliance_rank.item_selected.connect(func(i): change_bool("alliance_rank",i+1))
+	scouting_confidence.item_selected.connect(func(i): change_bool("scouting_confidence",scouting_confidence.get_item_text(i)))
+	drive_skill.item_selected.connect(func(i): change_bool("drive_skill",i))
+	defense_skill.item_selected.connect(func(i): change_bool("defense_skill",i))
+	accuracy.item_selected.connect(func(i): change_bool("accuracy",i))
+	comments.text_set.connect(func(t): change_bool("comments", t))
+	
+	done.pressed.connect(func(): print(stats))
 
+	
 	
 	manual_switch.pressed.connect(_switch_to_manual)
 	auto_switch.pressed.connect(_switch_to_auto_switch)

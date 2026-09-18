@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="woahscout"
-run/main_scene="res://base.tscn"
+run/main_scene="uid://cn3uift8rlp3o"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"
 
