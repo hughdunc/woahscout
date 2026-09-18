@@ -178,7 +178,7 @@ func _ready():
 			"hidden": [post_game, climb_option, auto_box, blue_got_first, who_got_label, red_got_first],
 		},
 		MatchMenu.WHO_GOT_FIRST: {
-			"name": "WHO GOT FIRST",
+			"name": "WHO SHIFT 1",
 			"visible": [during_game, blue_got_first, who_got_label, red_got_first],
 			"hidden": [post_game, opponent_box, defend_button, blue_gets_first, red_gets_first, neutral_plus, neutral_count, neutral_points_box, red_points_box, neutral_minus, red_plus, red_count, red_minus, climb_option, auto_box],
 		},

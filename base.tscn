@@ -1,6 +1,10 @@
 [gd_scene format=3 uid="uid://pksii8d5focd"]
 
+[ext_resource type="FontFile" uid="uid://dm7ekpanhpagu" path="res://Ethnocentric-Regular.otf" id="1_3vi8l"]
 [ext_resource type="Script" uid="uid://g5h1kgvq6qor" path="res://base.gd" id="1_rpg24"]
+
+[sub_resource type="Theme" id="Theme_rpg24"]
+default_font = ExtResource("1_3vi8l")
 
 [sub_resource type="DPITexture" id="DPITexture_g5ejs"]
 _source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\"><rect width=\"14\" height=\"14\" x=\"1\" y=\"1\" fill=\"#fff\" fill-opacity=\".75\" rx=\"2.333\"/><path fill=\"#1a1a1a\" d=\"m11.5 3.75-5.6 5.6-1.7-1.7-1.5 1.5 3.2 3.2 7.1-7.1z\"/></svg>
@@ -12,6 +16,13 @@ _source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\">
 "
 base_scale = 2.0
 
+[sub_resource type="FontVariation" id="FontVariation_ohhpf"]
+
+[sub_resource type="FontVariation" id="FontVariation_8rhti"]
+
+[sub_resource type="Theme" id="Theme_3vi8l"]
+default_font = SubResource("FontVariation_8rhti")
+
 [sub_resource type="DPITexture" id="DPITexture_3vi8l"]
 _source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\"><rect width=\"14\" height=\"14\" x=\"1\" y=\"1\" fill=\"#fff\" fill-opacity=\".75\" rx=\"2.333\"/><path fill=\"#1a1a1a\" d=\"m11.5 3.75-5.6 5.6-1.7-1.7-1.5 1.5 3.2 3.2 7.1-7.1z\"/></svg>
 "
@@ -22,9 +33,9 @@ _source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\">
 "
 base_scale = 2.0
 
-[sub_resource type="FontVariation" id="FontVariation_uchyk"]
-variation_transform = Transform2D(1, 0.405, 0, 1, 0, 0)
-baseline_offset = 0.175
+[sub_resource type="FontVariation" id="FontVariation_3vi8l"]
+base_font = ExtResource("1_3vi8l")
+variation_transform = Transform2D(1, 0.395, 0, 1, 0, 0)
 
 [node name="Control" type="Control" unique_id=464387620 node_paths=PackedStringArray("during_game", "post_game", "team_num", "period", "time_left", "time_until", "blue_gets_first", "opponent_box", "defend_button", "climb_option", "auto_box", "no_auto", "climb_auto", "blue_got_first", "neutral_points_box", "neutral_plus", "neutral_count", "neutral_minus", "who_got_label", "red_gets_first", "red_points_box", "red_plus", "red_count", "red_minus", "red_got_first", "auto_menu", "menu_back", "auto_switch", "menu_next", "manual_switch", "robot_disabled", "side_climb", "alliance_rank", "scouting_confidence", "drive_skill", "defense_skill", "accuracy", "comments", "done", "timer")]
 layout_mode = 3
@@ -33,6 +44,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = SubResource("Theme_rpg24")
 script = ExtResource("1_rpg24")
 during_game = NodePath("MarginContainer/VBoxContainer/Field")
 post_game = NodePath("MarginContainer/VBoxContainer/PostGame")
@@ -104,7 +116,7 @@ vertical_alignment = 1
 [node name="Period" type="Label" parent="MarginContainer/VBoxContainer/Info/HBoxContainer" unique_id=1084192950]
 layout_mode = 2
 size_flags_horizontal = 6
-theme_override_font_sizes/font_size = 48
+theme_override_font_sizes/font_size = 36
 text = "AUTO"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -113,12 +125,12 @@ vertical_alignment = 1
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
-theme_override_constants/separation = -12
+theme_override_constants/separation = -8
 
 [node name="Time" type="Label" parent="MarginContainer/VBoxContainer/Info/HBoxContainer/VBoxContainer" unique_id=1218477276]
 layout_mode = 2
 size_flags_horizontal = 6
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 28
 text = "3:45"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -126,7 +138,7 @@ vertical_alignment = 1
 [node name="Until" type="Label" parent="MarginContainer/VBoxContainer/Info/HBoxContainer/VBoxContainer" unique_id=1145167106]
 layout_mode = 2
 size_flags_horizontal = 6
-theme_override_font_sizes/font_size = 12
+theme_override_font_sizes/font_size = 10
 text = "0:12 to TRAN"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -172,9 +184,10 @@ theme_override_constants/separation = 16
 [node name="DefendButton" type="Button" parent="MarginContainer/VBoxContainer/Field/VBoxContainer/BlueZone/VBoxContainer/OpponentBox" unique_id=1669136464]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_constants/line_spacing = -20
+theme_override_constants/line_spacing = -6
 theme_override_font_sizes/font_size = 32
-text = "HOLD WHILE DEFENDING
+text = "HOLD WHILE 
+DEFENDING
 0:34"
 autowrap_mode = 3
 
@@ -193,6 +206,7 @@ popup/item_3/text = "L3 Climb"
 popup/item_3/id = 3
 
 [node name="AutoHBox" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Field/VBoxContainer/BlueZone" unique_id=1048046834]
+visible = false
 layout_mode = 2
 theme_override_constants/separation = 16
 
@@ -316,7 +330,6 @@ theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 32
 
 [node name="PointBox" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Field/VBoxContainer/NeutralZone" unique_id=48828672]
-visible = false
 layout_mode = 2
 theme_override_constants/separation = 16
 
@@ -330,7 +343,7 @@ text = "+5"
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 size_flags_vertical = 4
-theme_override_constants/separation = -16
+theme_override_constants/separation = -12
 
 [node name="Count" type="Label" parent="MarginContainer/VBoxContainer/Field/VBoxContainer/NeutralZone/PointBox/VBoxContainer" unique_id=833471146]
 layout_mode = 2
@@ -343,6 +356,7 @@ horizontal_alignment = 1
 custom_minimum_size = Vector2(8, 8)
 layout_mode = 2
 theme_override_constants/line_spacing = -6
+theme_override_fonts/font = SubResource("FontVariation_ohhpf")
 theme_override_font_sizes/font_size = 12
 text = "shuttled to alliance zone"
 horizontal_alignment = 1
@@ -355,11 +369,13 @@ theme_override_font_sizes/font_size = 64
 text = "-5"
 
 [node name="WhoGotLabel" type="Label" parent="MarginContainer/VBoxContainer/Field/VBoxContainer/NeutralZone" unique_id=472787556]
+visible = false
 custom_minimum_size = Vector2(2, 0)
 layout_mode = 2
-theme_override_constants/line_spacing = -24
+theme_override_constants/line_spacing = -6
 theme_override_font_sizes/font_size = 48
-text = "WHO GOT FIRST SHIFT"
+text = "WHO GOT
+FIRST SHIFT"
 horizontal_alignment = 1
 autowrap_mode = 3
 
@@ -521,6 +537,7 @@ text = "RED"
 visible = false
 layout_mode = 2
 size_flags_vertical = 3
+theme = SubResource("Theme_3vi8l")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer/PostGame" unique_id=1972097708]
 layout_mode = 2
@@ -708,6 +725,7 @@ wrap_mode = 1
 
 [node name="Done" type="Button" parent="MarginContainer/VBoxContainer/PostGame/ScrollContainer/VBoxContainer" unique_id=1434954212]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("1_3vi8l")
 theme_override_font_sizes/font_size = 32
 text = "Done"
 
@@ -731,20 +749,20 @@ text = " < "
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Controls/Manual/HBoxContainer" unique_id=164573201]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_constants/separation = -18
+theme_override_constants/separation = -13
 
 [node name="Switch" type="Button" parent="MarginContainer/VBoxContainer/Controls/Manual/HBoxContainer/VBoxContainer" unique_id=1924933392]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 32
-text = "TellHughIfUseeTs"
+text = "HI"
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Controls/Manual/HBoxContainer/VBoxContainer" unique_id=586994909]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 0.37254903)
-theme_override_fonts/font = SubResource("FontVariation_uchyk")
+theme_override_fonts/font = SubResource("FontVariation_3vi8l")
 theme_override_font_sizes/font_size = 12
-text = "Manual - Click to switch to Auto Switching"
+text = "Manual - PRESS FOR AUTO"
 horizontal_alignment = 1
 
 [node name="Next" type="Button" parent="MarginContainer/VBoxContainer/Controls/Manual/HBoxContainer" unique_id=287416553]
@@ -754,11 +772,11 @@ text = " > "
 
 [node name="Button" type="Button" parent="MarginContainer/VBoxContainer/Controls" unique_id=1826591674]
 visible = false
-custom_minimum_size = Vector2(0, 53)
+custom_minimum_size = Vector2(0, 39)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.88, 0.88, 0.88, 0.49803922)
 theme_override_font_sizes/font_size = 20
-text = "Auto Switching - Click to switch to Manual"
+text = "Auto - PRESS FOR MANUAL"
 
 [node name="Timer" type="Timer" parent="." unique_id=109986566]
 wait_time = 160.0
