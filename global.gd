@@ -9,13 +9,7 @@ var team_scouting = 0
 const SAVE_PATH = "res://matches.json"
 
 # Example game data you want to save
-var statistics = {
-	1: {
-		"scouter": "Aiden Still",
-		"subbing": false,
-		"stats": { 0: { "defended": 0.0, "shuttled": 15, "scored": 55, "no_auto": false, "climb": 1 }, 1: { "defended": 3.21666666666666, "shuttled": 10, "scored": 50 }, 3: { "defended": 0.23333333333333, "shuttled": 35, "scored": 70 }, 4: { "defended": 0.0, "shuttled": 35 }, 5: { "defended": 0.0, "shuttled": 10, "scored": 30 }, 6: { "defended": 0.0, "shuttled": 30 }, 7: { "defended": 5.16645999999998, "shuttled": 10, "scored": 40, "climb": 3 }, 8: { "robot_disabled": false, "side_climb": false, "alliance_rank": 1, "scouting_confidence": "Caught All", "drive_skill": 4, "defense_skill": 3, "accuracy": 4, "comments": "" } }
-	}
-}
+var statistics = {}
 var matches
 var config
 var rotations
@@ -107,7 +101,9 @@ func save_config() -> void:
 func load_config() -> void:
 	# Check if the file actually exists before trying to read it
 	if not FileAccess.file_exists("user://config.json"):
-		print("No save file found.")
+		Global.config = {"alliance_member": "red_1"}
+		Global.save_config()
+		print("Made new config.")
 		return
 	
 	# Open the file for reading
@@ -120,6 +116,6 @@ func load_config() -> void:
 	
 	if error == OK:
 		config = json.get_data()
-		print("Matches data loaded succesfully!")
+		print("Config data loaded succesfully!")
 	else:
 		print("JSON Parse Error: ", json.get_error_message(), " at line ", json.get_error_line())

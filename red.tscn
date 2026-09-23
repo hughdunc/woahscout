@@ -1,0 +1,787 @@
+[gd_scene format=3 uid="uid://pksii8d5focd"]
+
+[ext_resource type="Script" uid="uid://g5h1kgvq6qor" path="res://red.gd" id="1_fx4mt"]
+[ext_resource type="FontFile" uid="uid://dm7ekpanhpagu" path="res://Ethnocentric-Regular.otf" id="2_icr0l"]
+
+[sub_resource type="FontVariation" id="FontVariation_tpea4"]
+base_font = ExtResource("2_icr0l")
+baseline_offset = 0.19
+
+[sub_resource type="FontVariation" id="FontVariation_21bcp"]
+
+[sub_resource type="DPITexture" id="DPITexture_g5ejs"]
+_source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\"><rect width=\"14\" height=\"14\" x=\"1\" y=\"1\" fill=\"#fff\" fill-opacity=\".75\" rx=\"2.333\"/><path fill=\"#1a1a1a\" d=\"m11.5 3.75-5.6 5.6-1.7-1.7-1.5 1.5 3.2 3.2 7.1-7.1z\"/></svg>
+"
+base_scale = 2.0
+
+[sub_resource type="DPITexture" id="DPITexture_rpg24"]
+_source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\"><rect width=\"14\" height=\"14\" x=\"1\" y=\"1\" fill=\"#1a1a1a\" fill-opacity=\".5\" rx=\"2.333\"/></svg>
+"
+base_scale = 2.0
+
+[sub_resource type="FontVariation" id="FontVariation_ohhpf"]
+
+[sub_resource type="FontVariation" id="FontVariation_8rhti"]
+
+[sub_resource type="Theme" id="Theme_3vi8l"]
+default_font = SubResource("FontVariation_8rhti")
+
+[sub_resource type="DPITexture" id="DPITexture_3vi8l"]
+_source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\"><rect width=\"14\" height=\"14\" x=\"1\" y=\"1\" fill=\"#fff\" fill-opacity=\".75\" rx=\"2.333\"/><path fill=\"#1a1a1a\" d=\"m11.5 3.75-5.6 5.6-1.7-1.7-1.5 1.5 3.2 3.2 7.1-7.1z\"/></svg>
+"
+base_scale = 2.0
+
+[sub_resource type="DPITexture" id="DPITexture_8rhti"]
+_source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\"><rect width=\"14\" height=\"14\" x=\"1\" y=\"1\" fill=\"#1a1a1a\" fill-opacity=\".5\" rx=\"2.333\"/></svg>
+"
+base_scale = 2.0
+
+[sub_resource type="FontVariation" id="FontVariation_3vi8l"]
+variation_transform = Transform2D(1, 0.395, 0, 1, 0, 0)
+
+[node name="Control" type="Control" unique_id=464387620 node_paths=PackedStringArray("during_game", "post_game", "team_num", "period", "time_left", "time_until", "blue_gets_first", "opponent_box", "defend_button", "climb_option", "auto_box", "no_auto", "climb_auto", "blue_got_first", "neutral_points_box", "neutral_plus", "neutral_count", "neutral_minus", "who_got_label", "select_who_got", "red_gets_first", "red_points_box", "red_plus", "red_count", "red_minus", "red_got_first", "auto_menu", "menu_back", "auto_switch", "menu_next", "manual_switch", "robot_disabled", "side_climb", "alliance_rank", "scouting_confidence", "drive_skill", "defense_skill", "accuracy", "comments", "done", "timer")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fx4mt")
+during_game = NodePath("MarginContainer/VBoxContainer/Field")
+post_game = NodePath("MarginContainer/VBoxContainer/PostGame")
+team_num = NodePath("MarginContainer/VBoxContainer/Info/HBoxContainer/Team #")
+period = NodePath("MarginContainer/VBoxContainer/Info/HBoxContainer/Period")
+time_left = NodePath("MarginContainer/VBoxContainer/Info/HBoxContainer/VBoxContainer/Time")
+time_until = NodePath("MarginContainer/VBoxContainer/Info/HBoxContainer/VBoxContainer/Until")
+blue_gets_first = NodePath("MarginContainer/VBoxContainer/Field/VBoxContainer/BlueZone/VBoxContainer/BlueGetsFirst")
+opponent_box = NodePath("MarginContainer/VBoxContainer/Field/VBoxContainer/BlueZone/VBoxContainer/OpponentBox")
+defend_button = NodePath("MarginContainer/VBoxContainer/Field/VBoxContainer/BlueZone/VBoxContainer/OpponentBox/DefendButton")
+climb_option = NodePath("MarginContainer/VBoxContainer/Field/VBoxContainer/BlueZone/VBoxContainer/OpponentBox/ClimbOption")
+auto_box = NodePath("MarginContainer/VBoxContainer/Field/VBoxContainer/BlueZone/AutoHBox")
+no_auto = NodePath("MarginContainer/VBoxContainer/Field/VBoxContainer/BlueZone/AutoHBox/NoAuto")
+climb_auto = NodePath("MarginContainer/VBoxContainer/Field/VBoxContainer/BlueZone/AutoHBox/Climb")
+blue_got_first = NodePath("MarginContainer/VBoxContainer/Field/VBoxContainer/BlueZone/BlueGotFirst")
+neutral_points_box = NodePath("MarginContainer/VBoxContainer/Field/VBoxContainer/NeutralZone/PointBox")
+neutral_plus = NodePath("MarginContainer/VBoxContainer/Field/VBoxContainer/NeutralZone/PointBox/PlusButton")
+neutral_count = NodePath("MarginContainer/VBoxContainer/Field/VBoxContainer/NeutralZone/PointBox/VBoxContainer/Count")
+neutral_minus = NodePath("MarginContainer/VBoxContainer/Field/VBoxContainer/NeutralZone/PointBox/MinusButton")
+who_got_label = NodePath("MarginContainer/VBoxContainer/Field/VBoxContainer/NeutralZone/WhoGotLabel")
+select_who_got = NodePath("MarginContainer/VBoxContainer/Field/VBoxContainer/NeutralZone/SelectWhoGot")
+red_gets_first = NodePath("MarginContainer/VBoxContainer/Field/VBoxContainer/RedZone/VBoxContainer/RedGetsFirst")
+red_points_box = NodePath("MarginContainer/VBoxContainer/Field/VBoxContainer/RedZone/VBoxContainer/PointsBox")
+red_plus = NodePath("MarginContainer/VBoxContainer/Field/VBoxContainer/RedZone/VBoxContainer/PointsBox/PlusButton")
+red_count = NodePath("MarginContainer/VBoxContainer/Field/VBoxContainer/RedZone/VBoxContainer/PointsBox/Count")
+red_minus = NodePath("MarginContainer/VBoxContainer/Field/VBoxContainer/RedZone/VBoxContainer/PointsBox/MinusButton")
+red_got_first = NodePath("MarginContainer/VBoxContainer/Field/VBoxContainer/RedZone/RedGotFirst")
+auto_menu = NodePath("MarginContainer/VBoxContainer/Controls/Manual/HBoxContainer")
+menu_back = NodePath("MarginContainer/VBoxContainer/Controls/Manual/HBoxContainer/Back")
+auto_switch = NodePath("MarginContainer/VBoxContainer/Controls/Manual/HBoxContainer/VBoxContainer/Switch")
+menu_next = NodePath("MarginContainer/VBoxContainer/Controls/Manual/HBoxContainer/Next")
+manual_switch = NodePath("MarginContainer/VBoxContainer/Controls/Button")
+robot_disabled = NodePath("MarginContainer/VBoxContainer/PostGame/ScrollContainer/VBoxContainer/RobotDisabled")
+side_climb = NodePath("MarginContainer/VBoxContainer/PostGame/ScrollContainer/VBoxContainer/SideClimb")
+alliance_rank = NodePath("MarginContainer/VBoxContainer/PostGame/ScrollContainer/VBoxContainer/HBoxContainer/AllianceRank")
+scouting_confidence = NodePath("MarginContainer/VBoxContainer/PostGame/ScrollContainer/VBoxContainer/HBoxContainer2/ScoutingConfidence")
+drive_skill = NodePath("MarginContainer/VBoxContainer/PostGame/ScrollContainer/VBoxContainer/HBoxContainer3/DriveSkill")
+defense_skill = NodePath("MarginContainer/VBoxContainer/PostGame/ScrollContainer/VBoxContainer/HBoxContainer4/DefenseSkill")
+accuracy = NodePath("MarginContainer/VBoxContainer/PostGame/ScrollContainer/VBoxContainer/HBoxContainer5/Accuracy")
+comments = NodePath("MarginContainer/VBoxContainer/PostGame/ScrollContainer/VBoxContainer/Comments")
+done = NodePath("MarginContainer/VBoxContainer/PostGame/ScrollContainer/VBoxContainer/Done")
+timer = NodePath("Timer")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=2089414100]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=477889685]
+layout_mode = 2
+
+[node name="Info" type="PanelContainer" parent="MarginContainer/VBoxContainer" unique_id=2022033037]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Info" unique_id=231641238]
+layout_mode = 2
+
+[node name="Team #" type="Label" parent="MarginContainer/VBoxContainer/Info/HBoxContainer" unique_id=36071196]
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_colors/font_color = Color(0.9490196, 0.38039216, 0.27058825, 1)
+theme_override_font_sizes/font_size = 32
+text = "7034"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Period" type="Label" parent="MarginContainer/VBoxContainer/Info/HBoxContainer" unique_id=1084192950]
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_fonts/font = SubResource("FontVariation_tpea4")
+theme_override_font_sizes/font_size = 36
+text = "AUTO"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Info/HBoxContainer" unique_id=1855972465]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_constants/separation = -12
+
+[node name="Time" type="Label" parent="MarginContainer/VBoxContainer/Info/HBoxContainer/VBoxContainer" unique_id=1218477276]
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_font_sizes/font_size = 28
+text = "3:45"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Until" type="Label" parent="MarginContainer/VBoxContainer/Info/HBoxContainer/VBoxContainer" unique_id=1145167106]
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_fonts/font = SubResource("FontVariation_21bcp")
+theme_override_font_sizes/font_size = 12
+text = "0:12 to TRAN"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Field" type="PanelContainer" parent="MarginContainer/VBoxContainer" unique_id=692622311]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Field" unique_id=1162604283]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="BlueZone" type="MarginContainer" parent="MarginContainer/VBoxContainer/Field/VBoxContainer" unique_id=2126647923]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 3.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Field/VBoxContainer/BlueZone" unique_id=223312899]
+layout_mode = 2
+
+[node name="BlueGetsFirst" type="Button" parent="MarginContainer/VBoxContainer/Field/VBoxContainer/BlueZone/VBoxContainer" unique_id=265651398]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.3254902, 0.627451, 0.9411765, 1)
+theme_override_colors/font_focus_color = Color(0.3254902, 0.627451, 0.9411765, 1)
+theme_override_colors/font_pressed_color = Color(0.3254902, 0.627451, 0.9411765, 1)
+theme_override_colors/font_hover_color = Color(0.3254902, 0.627451, 0.9411765, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.3254902, 0.627451, 0.9411765, 1)
+theme_override_colors/font_disabled_color = Color(0.6016, 0.7651599, 0.94, 0.49803922)
+theme_override_font_sizes/font_size = 24
+disabled = true
+text = "BLUE GETS FIRST SHIFT"
+
+[node name="OpponentBox" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Field/VBoxContainer/BlueZone/VBoxContainer" unique_id=1025338963]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 16
+
+[node name="DefendButton" type="Button" parent="MarginContainer/VBoxContainer/Field/VBoxContainer/BlueZone/VBoxContainer/OpponentBox" unique_id=1669136464]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/line_spacing = -6
+theme_override_font_sizes/font_size = 28
+text = "HOLD WHILE 
+DEFENDING
+0:34"
+autowrap_mode = 3
+
+[node name="ClimbOption" type="OptionButton" parent="MarginContainer/VBoxContainer/Field/VBoxContainer/BlueZone/VBoxContainer/OpponentBox" unique_id=416933371]
+visible = false
+layout_mode = 2
+selected = 0
+item_count = 4
+popup/item_0/text = "No Climb"
+popup/item_0/id = 0
+popup/item_1/text = "L1 Climb"
+popup/item_1/id = 1
+popup/item_2/text = "L2 Climb"
+popup/item_2/id = 2
+popup/item_3/text = "L3 Climb"
+popup/item_3/id = 3
+
+[node name="AutoHBox" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Field/VBoxContainer/BlueZone" unique_id=1048046834]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="NoAuto" type="CheckBox" parent="MarginContainer/VBoxContainer/Field/VBoxContainer/BlueZone/AutoHBox" unique_id=1306815483]
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_font_sizes/font_size = 32
+theme_override_icons/checked = SubResource("DPITexture_g5ejs")
+theme_override_icons/unchecked = SubResource("DPITexture_rpg24")
+text = "No Auto"
+
+[node name="Climb" type="CheckBox" parent="MarginContainer/VBoxContainer/Field/VBoxContainer/BlueZone/AutoHBox" unique_id=1106623292]
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_font_sizes/font_size = 32
+theme_override_icons/checked = SubResource("DPITexture_g5ejs")
+theme_override_icons/unchecked = SubResource("DPITexture_rpg24")
+text = "Climb?"
+
+[node name="BlueGotFirst" type="Button" parent="MarginContainer/VBoxContainer/Field/VBoxContainer/BlueZone" unique_id=1803434104]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.3254902, 0.627451, 0.9411765, 1)
+theme_override_colors/font_focus_color = Color(0.3254902, 0.627451, 0.9411765, 1)
+theme_override_colors/font_pressed_color = Color(0.3254902, 0.627451, 0.9411765, 1)
+theme_override_colors/font_hover_color = Color(0.3254902, 0.627451, 0.9411765, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.3254902, 0.627451, 0.9411765, 1)
+theme_override_colors/font_disabled_color = Color(0.6016, 0.7651599, 0.94, 0.49803922)
+theme_override_font_sizes/font_size = 64
+disabled = true
+text = "BLUE"
+
+[node name="BlueSeperator" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Field/VBoxContainer" unique_id=1428650078]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 0
+
+[node name="LeftTrench" type="MarginContainer" parent="MarginContainer/VBoxContainer/Field/VBoxContainer/BlueSeperator" unique_id=1402258390]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_top = 17
+theme_override_constants/margin_bottom = 16
+
+[node name="ColorRect2" type="ColorRect" parent="MarginContainer/VBoxContainer/Field/VBoxContainer/BlueSeperator/LeftTrench" unique_id=196415857]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color(0.32684293, 0.63035536, 0.94190216, 1)
+
+[node name="LeftBump" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Field/VBoxContainer/BlueSeperator" unique_id=981108994]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/VBoxContainer/Field/VBoxContainer/BlueSeperator/LeftBump" unique_id=533789692]
+layout_mode = 2
+size_flags_vertical = 3
+color = Color(0.28618222, 0.6806016, 0.9042398, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="MarginContainer/VBoxContainer/Field/VBoxContainer/BlueSeperator/LeftBump" unique_id=1295808746]
+layout_mode = 2
+size_flags_vertical = 3
+color = Color(0.20342648, 0.60952437, 0.8276536, 1)
+
+[node name="Hub" type="ColorRect" parent="MarginContainer/VBoxContainer/Field/VBoxContainer/BlueSeperator" unique_id=325029807]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color(0.3254902, 0.627451, 0.9411765, 1)
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/VBoxContainer/Field/VBoxContainer/BlueSeperator/Hub" unique_id=1966744841]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -24.421566
+offset_top = -21.5
+offset_right = 24.421566
+offset_bottom = 21.5
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.66562366, 0.81697327, 0.9849375, 1)
+
+[node name="RightBump" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Field/VBoxContainer/BlueSeperator" unique_id=563356119]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/VBoxContainer/Field/VBoxContainer/BlueSeperator/RightBump" unique_id=883361730]
+layout_mode = 2
+size_flags_vertical = 3
+color = Color(0.28618222, 0.6806016, 0.9042398, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="MarginContainer/VBoxContainer/Field/VBoxContainer/BlueSeperator/RightBump" unique_id=403023388]
+layout_mode = 2
+size_flags_vertical = 3
+color = Color(0.20342648, 0.60952437, 0.8276536, 1)
+
+[node name="RightTrench" type="MarginContainer" parent="MarginContainer/VBoxContainer/Field/VBoxContainer/BlueSeperator" unique_id=545063599]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_top = 17
+theme_override_constants/margin_bottom = 16
+
+[node name="ColorRect2" type="ColorRect" parent="MarginContainer/VBoxContainer/Field/VBoxContainer/BlueSeperator/RightTrench" unique_id=1955221221]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color(0.3254902, 0.627451, 0.9411765, 1)
+
+[node name="NeutralZone" type="MarginContainer" parent="MarginContainer/VBoxContainer/Field/VBoxContainer" unique_id=867392327]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 3.0
+
+[node name="PointBox" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Field/VBoxContainer/NeutralZone" unique_id=48828672]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="PlusButton" type="Button" parent="MarginContainer/VBoxContainer/Field/VBoxContainer/NeutralZone/PointBox" unique_id=1443648861]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 64
+text = "+5"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Field/VBoxContainer/NeutralZone/PointBox" unique_id=142556627]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = -12
+
+[node name="Count" type="Label" parent="MarginContainer/VBoxContainer/Field/VBoxContainer/NeutralZone/PointBox/VBoxContainer" unique_id=833471146]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 48
+text = "0"
+horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Field/VBoxContainer/NeutralZone/PointBox/VBoxContainer" unique_id=556215327]
+custom_minimum_size = Vector2(8, 8)
+layout_mode = 2
+theme_override_constants/line_spacing = -6
+theme_override_fonts/font = SubResource("FontVariation_ohhpf")
+theme_override_font_sizes/font_size = 12
+text = "shuttled to alliance zone"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="MinusButton" type="Button" parent="MarginContainer/VBoxContainer/Field/VBoxContainer/NeutralZone/PointBox" unique_id=2121989681]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 64
+text = "-5"
+
+[node name="WhoGotLabel" type="Label" parent="MarginContainer/VBoxContainer/Field/VBoxContainer/NeutralZone" unique_id=472787556]
+visible = false
+custom_minimum_size = Vector2(2, 0)
+layout_mode = 2
+theme_override_constants/line_spacing = -6
+theme_override_font_sizes/font_size = 48
+text = "WHO GOT
+FIRST SHIFT"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="SelectWhoGot" type="Label" parent="MarginContainer/VBoxContainer/Field/VBoxContainer/NeutralZone" unique_id=1834087890]
+visible = false
+custom_minimum_size = Vector2(2, 0)
+layout_mode = 2
+theme_override_constants/line_spacing = -16
+theme_override_font_sizes/font_size = 32
+text = "GO BACK & SAY
+WHO GOT FIRST SHIFT"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="RedSeperator" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Field/VBoxContainer" unique_id=1701460841]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 0
+
+[node name="LeftTrench" type="MarginContainer" parent="MarginContainer/VBoxContainer/Field/VBoxContainer/RedSeperator" unique_id=932209065]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_top = 17
+theme_override_constants/margin_bottom = 16
+
+[node name="ColorRect2" type="ColorRect" parent="MarginContainer/VBoxContainer/Field/VBoxContainer/RedSeperator/LeftTrench" unique_id=2062038336]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color(0.9483686, 0.38155803, 0.2699758, 1)
+
+[node name="LeftBump" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Field/VBoxContainer/RedSeperator" unique_id=1112814375]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/VBoxContainer/Field/VBoxContainer/RedSeperator/LeftBump" unique_id=1795416438]
+layout_mode = 2
+size_flags_vertical = 3
+color = Color(0.85801584, 0.2358137, 0.34999666, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="MarginContainer/VBoxContainer/Field/VBoxContainer/RedSeperator/LeftBump" unique_id=1032496872]
+layout_mode = 2
+size_flags_vertical = 3
+color = Color(0.9570275, 0.42397878, 0.48758096, 1)
+
+[node name="Hub" type="ColorRect" parent="MarginContainer/VBoxContainer/Field/VBoxContainer/RedSeperator" unique_id=1608709048]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color(0.9490196, 0.38039216, 0.27058825, 1)
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/VBoxContainer/Field/VBoxContainer/RedSeperator/Hub" unique_id=331322959]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -24.421566
+offset_top = -21.5
+offset_right = 24.421566
+offset_bottom = 21.5
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.9912024, 0.74638957, 0.69186354, 1)
+
+[node name="RightBump" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Field/VBoxContainer/RedSeperator" unique_id=1135018050]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/VBoxContainer/Field/VBoxContainer/RedSeperator/RightBump" unique_id=491910301]
+layout_mode = 2
+size_flags_vertical = 3
+color = Color(0.85801584, 0.2358137, 0.34999666, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="MarginContainer/VBoxContainer/Field/VBoxContainer/RedSeperator/RightBump" unique_id=1158540630]
+layout_mode = 2
+size_flags_vertical = 3
+color = Color(0.9570275, 0.42397878, 0.48758096, 1)
+
+[node name="RightTrench" type="MarginContainer" parent="MarginContainer/VBoxContainer/Field/VBoxContainer/RedSeperator" unique_id=312411478]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_top = 17
+theme_override_constants/margin_bottom = 16
+
+[node name="ColorRect2" type="ColorRect" parent="MarginContainer/VBoxContainer/Field/VBoxContainer/RedSeperator/RightTrench" unique_id=820924243]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color(0.9490196, 0.38039216, 0.27058825, 1)
+
+[node name="RedZone" type="MarginContainer" parent="MarginContainer/VBoxContainer/Field/VBoxContainer" unique_id=106494856]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 3.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Field/VBoxContainer/RedZone" unique_id=564470722]
+layout_mode = 2
+
+[node name="PointsBox" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Field/VBoxContainer/RedZone/VBoxContainer" unique_id=1066424357]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 16
+
+[node name="PlusButton" type="Button" parent="MarginContainer/VBoxContainer/Field/VBoxContainer/RedZone/VBoxContainer/PointsBox" unique_id=1687935482]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.9490196, 0.38039216, 0.27058825, 1)
+theme_override_colors/font_focus_color = Color(0.9490196, 0.38039216, 0.27058825, 1)
+theme_override_colors/font_pressed_color = Color(0.9490196, 0.38039216, 0.27058825, 1)
+theme_override_colors/font_hover_color = Color(0.9490196, 0.38039216, 0.27058825, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.9490196, 0.38039216, 0.27058825, 1)
+theme_override_colors/font_disabled_color = Color(0.9490196, 0.38039216, 0.27058825, 0.20392157)
+theme_override_font_sizes/font_size = 64
+text = "+5"
+
+[node name="Count" type="Label" parent="MarginContainer/VBoxContainer/Field/VBoxContainer/RedZone/VBoxContainer/PointsBox" unique_id=1771152160]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 48
+text = "0"
+horizontal_alignment = 1
+
+[node name="MinusButton" type="Button" parent="MarginContainer/VBoxContainer/Field/VBoxContainer/RedZone/VBoxContainer/PointsBox" unique_id=1616422795]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.9490196, 0.38039216, 0.27058825, 1)
+theme_override_colors/font_focus_color = Color(0.9490196, 0.38039216, 0.27058825, 1)
+theme_override_colors/font_pressed_color = Color(0.9490196, 0.38039216, 0.27058825, 1)
+theme_override_colors/font_hover_color = Color(0.9490196, 0.38039216, 0.27058825, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.9490196, 0.38039216, 0.27058825, 1)
+theme_override_colors/font_disabled_color = Color(0.95, 0.66499996, 0.608, 0.20392157)
+theme_override_font_sizes/font_size = 64
+text = "-5"
+
+[node name="RedGetsFirst" type="Button" parent="MarginContainer/VBoxContainer/Field/VBoxContainer/RedZone/VBoxContainer" unique_id=672303268]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.9490196, 0.38039216, 0.27058825, 1)
+theme_override_colors/font_focus_color = Color(0.9490196, 0.38039216, 0.27058825, 1)
+theme_override_colors/font_pressed_color = Color(0.9490196, 0.38039216, 0.27058825, 1)
+theme_override_colors/font_hover_color = Color(0.9490196, 0.38039216, 0.27058825, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.9490196, 0.38039216, 0.27058825, 1)
+theme_override_colors/font_disabled_color = Color(0.9490196, 0.38039216, 0.27058825, 0.20392157)
+theme_override_font_sizes/font_size = 24
+text = "RED GETS FIRST SHIFT"
+
+[node name="RedGotFirst" type="Button" parent="MarginContainer/VBoxContainer/Field/VBoxContainer/RedZone" unique_id=582552988]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.9490196, 0.38039216, 0.27058825, 1)
+theme_override_colors/font_focus_color = Color(0.9490196, 0.38039216, 0.27058825, 1)
+theme_override_colors/font_pressed_color = Color(0.9490196, 0.38039216, 0.27058825, 1)
+theme_override_colors/font_hover_color = Color(0.9490196, 0.38039216, 0.27058825, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.9490196, 0.38039216, 0.27058825, 1)
+theme_override_colors/font_disabled_color = Color(0.9490196, 0.38039216, 0.27058825, 0.20392157)
+theme_override_font_sizes/font_size = 64
+text = "RED"
+
+[node name="PostGame" type="PanelContainer" parent="MarginContainer/VBoxContainer" unique_id=310298840]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+theme = SubResource("Theme_3vi8l")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer/PostGame" unique_id=1972097708]
+layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/PostGame/ScrollContainer" unique_id=1521460833]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="RobotDisabled" type="CheckBox" parent="MarginContainer/VBoxContainer/PostGame/ScrollContainer/VBoxContainer" unique_id=534880844]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+theme_override_icons/checked = SubResource("DPITexture_3vi8l")
+theme_override_icons/unchecked = SubResource("DPITexture_8rhti")
+text = "Robot Disabled?"
+alignment = 1
+
+[node name="SideClimb" type="CheckBox" parent="MarginContainer/VBoxContainer/PostGame/ScrollContainer/VBoxContainer" unique_id=504100146]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+theme_override_icons/checked = SubResource("DPITexture_3vi8l")
+theme_override_icons/unchecked = SubResource("DPITexture_8rhti")
+text = "Side Climb?"
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/PostGame/ScrollContainer/VBoxContainer" unique_id=1538752126]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/PostGame/ScrollContainer/VBoxContainer/HBoxContainer" unique_id=284887808]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 32
+text = "Alliance Rank"
+
+[node name="AllianceRank" type="OptionButton" parent="MarginContainer/VBoxContainer/PostGame/ScrollContainer/VBoxContainer/HBoxContainer" unique_id=1174418813]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 32
+selected = 0
+item_count = 3
+popup/item_0/text = "1"
+popup/item_0/id = 0
+popup/item_1/text = "2"
+popup/item_1/id = 1
+popup/item_2/text = "3"
+popup/item_2/id = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer/PostGame/ScrollContainer/VBoxContainer" unique_id=1065986713]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/PostGame/ScrollContainer/VBoxContainer/HBoxContainer2" unique_id=658665789]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = -14
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/PostGame/ScrollContainer/VBoxContainer/HBoxContainer2/VBoxContainer" unique_id=1964714646]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 32
+text = "Confidence"
+
+[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/PostGame/ScrollContainer/VBoxContainer/HBoxContainer2/VBoxContainer" unique_id=765744284]
+layout_mode = 2
+text = "(how much you saw)"
+
+[node name="ScoutingConfidence" type="OptionButton" parent="MarginContainer/VBoxContainer/PostGame/ScrollContainer/VBoxContainer/HBoxContainer2" unique_id=871957766]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 32
+selected = 1
+item_count = 3
+popup/item_0/text = "Missed Much"
+popup/item_0/id = 0
+popup/item_1/text = "Caught Most"
+popup/item_1/id = 1
+popup/item_2/text = "Caught All"
+popup/item_2/id = 2
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer/VBoxContainer/PostGame/ScrollContainer/VBoxContainer" unique_id=1676406366]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/PostGame/ScrollContainer/VBoxContainer/HBoxContainer3" unique_id=1816613020]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 32
+text = "Driving"
+
+[node name="DriveSkill" type="OptionButton" parent="MarginContainer/VBoxContainer/PostGame/ScrollContainer/VBoxContainer/HBoxContainer3" unique_id=616273996]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 32
+selected = 0
+item_count = 6
+popup/item_0/text = "Not Observed"
+popup/item_0/id = 0
+popup/item_1/text = "Very Bad"
+popup/item_1/id = 1
+popup/item_2/text = "Bad"
+popup/item_2/id = 2
+popup/item_3/text = "Fine"
+popup/item_3/id = 3
+popup/item_4/text = "Great"
+popup/item_4/id = 4
+popup/item_5/text = "Amazing"
+popup/item_5/id = 5
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="MarginContainer/VBoxContainer/PostGame/ScrollContainer/VBoxContainer" unique_id=946799073]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/PostGame/ScrollContainer/VBoxContainer/HBoxContainer4" unique_id=1547604808]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 32
+text = "Defense"
+
+[node name="DefenseSkill" type="OptionButton" parent="MarginContainer/VBoxContainer/PostGame/ScrollContainer/VBoxContainer/HBoxContainer4" unique_id=1835404726]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 32
+selected = 0
+item_count = 6
+popup/item_0/text = "Not Observed"
+popup/item_0/id = 0
+popup/item_1/text = "Very Bad"
+popup/item_1/id = 1
+popup/item_2/text = "Bad"
+popup/item_2/id = 2
+popup/item_3/text = "Fine"
+popup/item_3/id = 3
+popup/item_4/text = "Great"
+popup/item_4/id = 4
+popup/item_5/text = "Amazing"
+popup/item_5/id = 5
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="MarginContainer/VBoxContainer/PostGame/ScrollContainer/VBoxContainer" unique_id=2125710024]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/PostGame/ScrollContainer/VBoxContainer/HBoxContainer5" unique_id=1614194]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = -14
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/PostGame/ScrollContainer/VBoxContainer/HBoxContainer5/VBoxContainer" unique_id=1286633885]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 32
+text = "Accuracy"
+
+[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/PostGame/ScrollContainer/VBoxContainer/HBoxContainer5/VBoxContainer" unique_id=1332392998]
+layout_mode = 2
+text = "(how much got in the hub)"
+
+[node name="Accuracy" type="OptionButton" parent="MarginContainer/VBoxContainer/PostGame/ScrollContainer/VBoxContainer/HBoxContainer5" unique_id=463045805]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 32
+selected = 0
+item_count = 6
+popup/item_0/text = "Not Observed"
+popup/item_0/id = 0
+popup/item_1/text = "Very Bad"
+popup/item_1/id = 1
+popup/item_2/text = "Bad"
+popup/item_2/id = 2
+popup/item_3/text = "Fine"
+popup/item_3/id = 3
+popup/item_4/text = "Great"
+popup/item_4/id = 4
+popup/item_5/text = "Amazing"
+popup/item_5/id = 5
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/PostGame/ScrollContainer/VBoxContainer" unique_id=281682402]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Comments (Required, do this!!)"
+
+[node name="Comments" type="TextEdit" parent="MarginContainer/VBoxContainer/PostGame/ScrollContainer/VBoxContainer" unique_id=856216536]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/line_spacing = 0
+theme_override_font_sizes/font_size = 24
+placeholder_text = "Be specific, what happened? What went good? What went wrong?"
+wrap_mode = 1
+
+[node name="Done" type="Button" parent="MarginContainer/VBoxContainer/PostGame/ScrollContainer/VBoxContainer" unique_id=1434954212]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_icr0l")
+theme_override_font_sizes/font_size = 32
+text = "Done"
+
+[node name="Controls" type="PanelContainer" parent="MarginContainer/VBoxContainer" unique_id=1530453832]
+layout_mode = 2
+
+[node name="Manual" type="MarginContainer" parent="MarginContainer/VBoxContainer/Controls" unique_id=1416236047]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_right = 16
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Controls/Manual" unique_id=191776863]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Back" type="Button" parent="MarginContainer/VBoxContainer/Controls/Manual/HBoxContainer" unique_id=1259930296]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = " < "
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Controls/Manual/HBoxContainer" unique_id=164573201]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = -13
+
+[node name="Switch" type="Button" parent="MarginContainer/VBoxContainer/Controls/Manual/HBoxContainer/VBoxContainer" unique_id=1924933392]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 32
+text = "HI"
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Controls/Manual/HBoxContainer/VBoxContainer" unique_id=586994909]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 0.37254903)
+theme_override_fonts/font = SubResource("FontVariation_3vi8l")
+theme_override_font_sizes/font_size = 12
+text = "MANUAL - PRESS FOR AUTO"
+horizontal_alignment = 1
+
+[node name="Next" type="Button" parent="MarginContainer/VBoxContainer/Controls/Manual/HBoxContainer" unique_id=287416553]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = " > "
+
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer/Controls" unique_id=1826591674]
+visible = false
+custom_minimum_size = Vector2(0, 53)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.88, 0.88, 0.88, 0.49803922)
+theme_override_font_sizes/font_size = 20
+text = "Auto - PRESS FOR MANUAL"
+
+[node name="Timer" type="Timer" parent="." unique_id=109986566]
+wait_time = 160.0
+one_shot = true

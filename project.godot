@@ -23,6 +23,7 @@ Global="*uid://bfrwiw0uwo13b"
 
 window/size/viewport_width=360
 window/size/viewport_height=640
+window/stretch/scale=0.9
 window/handheld/orientation=1
 
 [physics]

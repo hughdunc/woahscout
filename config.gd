@@ -8,10 +8,6 @@ func _ready():
 func load_config():
 	Global.load_config()
 	
-	if not Global.config or Global.config == {}:
-		Global.config = {"alliance_member": "red_1"}
-		Global.save_config()
-	
 	for i in alliance_member.item_count:
 		if alliance_member.get_item_text(i) == Global.config["alliance_member"]:
 			alliance_member.selected = i

@@ -39,9 +39,14 @@ func get_match_data():
 
 func _on_start_pressed() -> void:
 	Global.current_match = int(match_num.value)
+	Global.team_scouting = str(int(Global.matches[int(match_num.value - 1)][Global.config["alliance_member"]]))
 	if subbing_checkbox.button_pressed:
 		Global.subbing = subbing_lineedit.text
-	get_tree().change_scene_to_file("res://base.tscn")
+	Global.load_config()
+	if Global.config["alliance_member"].begins_with("red"):
+		get_tree().change_scene_to_file("res://red.tscn")
+	else:
+		get_tree().change_scene_to_file("res://blue.tscn")
 
 
 func _on_check_box_toggled(toggled_on: bool) -> void:
