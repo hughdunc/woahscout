@@ -398,7 +398,7 @@ func _red_first():
 		load_menu(current_menu)
 
 func format_time(total_seconds: float) -> String:
-	var minutes: int = int(total_seconds) / 60
+	var minutes: int = int(total_seconds / 60)
 	var seconds: int = int(total_seconds) % 60
 	
 	# Returns a padded string like "02:05" instead of "2:5"

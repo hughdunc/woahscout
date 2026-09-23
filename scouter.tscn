@@ -64,6 +64,11 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_constants/separation = 8
 
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/VBoxContainer" unique_id=551406918]
+layout_mode = 2
+text = "ORSAL - Oregon State Fair"
+horizontal_alignment = 1
+
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/PanelContainer/VBoxContainer" unique_id=70254427]
 layout_mode = 2
 
@@ -75,6 +80,7 @@ text = "Match"
 horizontal_alignment = 1
 
 [node name="SpinBox" type="SpinBox" parent="MarginContainer/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer" unique_id=1417361320]
+propagate_maximum_size = true
 layout_mode = 2
 theme = SubResource("Theme_opdbr")
 min_value = 1.0
@@ -95,7 +101,7 @@ layout_mode = 2
 theme_override_constants/line_spacing = -16
 theme_override_fonts/font = SubResource("FontVariation_aagap")
 theme_override_font_sizes/font_size = 35
-text = "Aiden Still asdsadasdadadsasd"
+text = "Aiden Still "
 horizontal_alignment = 1
 autowrap_mode = 3
 
@@ -137,7 +143,6 @@ text = "Subbing"
 alignment = 1
 
 [node name="LineEdit" type="LineEdit" parent="MarginContainer/VBoxContainer/PanelContainer/VBoxContainer" unique_id=1313280605]
-visible = false
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 placeholder_text = "Enter Your Name..."

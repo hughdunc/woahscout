@@ -3,8 +3,10 @@ extends Node
 
 var subbing = ""
 
-var current_match = 1
-var team_scouting = 0
+
+var current_match: int = 1
+var team_scouting: int = 0
+var current_event = "ORSAL"
 
 const SAVE_PATH = "res://matches.json"
 
@@ -119,3 +121,7 @@ func load_config() -> void:
 		print("Config data loaded succesfully!")
 	else:
 		print("JSON Parse Error: ", json.get_error_message(), " at line ", json.get_error_line())
+
+
+func stats(ms):
+	statistics[current_match][team_scouting] = ms
