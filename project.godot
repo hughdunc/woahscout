@@ -15,11 +15,14 @@ run/main_scene="uid://cn3uift8rlp3o"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Global="*uid://bfrwiw0uwo13b"
+
 [display]
 
 window/size/viewport_width=360
 window/size/viewport_height=640
-window/stretch/scale=0.8
 window/handheld/orientation=1
 
 [physics]

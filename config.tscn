@@ -1,0 +1,73 @@
+[gd_scene format=3 uid="uid://c2kjgxjx5m54d"]
+
+[ext_resource type="Script" uid="uid://bsnl7n8xdr4m6" path="res://config.gd" id="1_w2241"]
+
+[node name="Config" type="Control" unique_id=1495917440 node_paths=PackedStringArray("alliance_member")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_w2241")
+alliance_member = NodePath("MarginContainer/VBoxContainer/PanelContainer/VBoxContainer/OptionButton")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=753993000]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1610097010]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer" unique_id=2040061315]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/PanelContainer" unique_id=2032729165]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/VBoxContainer" unique_id=1092132098]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Alliance Member:"
+
+[node name="OptionButton" type="OptionButton" parent="MarginContainer/VBoxContainer/PanelContainer/VBoxContainer" unique_id=945940068]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+item_count = 6
+popup/item_0/text = "red_1"
+popup/item_0/id = 0
+popup/item_1/text = "red_2"
+popup/item_1/id = 1
+popup/item_2/text = "red_3"
+popup/item_2/id = 2
+popup/item_3/text = "blue_1"
+popup/item_3/id = 3
+popup/item_4/text = "blue_2"
+popup/item_4/id = 4
+popup/item_5/text = "blue_3"
+popup/item_5/id = 5
+
+[node name="Save" type="Button" parent="MarginContainer/VBoxContainer/PanelContainer/VBoxContainer" unique_id=476987350]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "Save"
+
+[node name="Cancel" type="Button" parent="MarginContainer/VBoxContainer/PanelContainer/VBoxContainer" unique_id=90637456]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "Cancel"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/PanelContainer/VBoxContainer/Save" to="." method="_on_save_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/PanelContainer/VBoxContainer/Cancel" to="." method="_on_cancel_pressed"]

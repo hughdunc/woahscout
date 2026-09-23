@@ -3,6 +3,12 @@
 [ext_resource type="Script" uid="uid://dqh4v3b6242t3" path="res://start_menu.gd" id="1_7vf6e"]
 [ext_resource type="FontFile" uid="uid://dm7ekpanhpagu" path="res://Ethnocentric-Regular.otf" id="1_aagap"]
 
+[sub_resource type="Theme" id="Theme_opdbr"]
+default_font_size = 35
+
+[sub_resource type="FontVariation" id="FontVariation_aagap"]
+variation_embolden = 1.0
+
 [sub_resource type="FontVariation" id="FontVariation_03tj5"]
 base_font = ExtResource("1_aagap")
 baseline_offset = 0.125
@@ -17,7 +23,7 @@ _source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\">
 "
 base_scale = 2.0
 
-[node name="Scouter" type="Control" unique_id=1679196615]
+[node name="Scouter" type="Control" unique_id=1679196615 node_paths=PackedStringArray("match_num", "scouter_name", "matches_till_done", "team_num", "alliance_member", "subbing_checkbox", "subbing_lineedit")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -25,6 +31,13 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_7vf6e")
+match_num = NodePath("MarginContainer/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/SpinBox")
+scouter_name = NodePath("MarginContainer/VBoxContainer/PanelContainer/VBoxContainer/VBoxContainer/ScouterName")
+matches_till_done = NodePath("MarginContainer/VBoxContainer/PanelContainer/VBoxContainer/VBoxContainer/Label2")
+team_num = NodePath("MarginContainer/VBoxContainer/PanelContainer/VBoxContainer/VBoxContainer2/Team #")
+alliance_member = NodePath("MarginContainer/VBoxContainer/PanelContainer/VBoxContainer/VBoxContainer2/Label4")
+subbing_checkbox = NodePath("MarginContainer/VBoxContainer/PanelContainer/VBoxContainer/CheckBox")
+subbing_lineedit = NodePath("MarginContainer/VBoxContainer/PanelContainer/VBoxContainer/LineEdit")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=1491590794]
 layout_mode = 1
@@ -51,11 +64,22 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_constants/separation = 8
 
-[node name="ScouterName2" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/VBoxContainer" unique_id=1545591275]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/PanelContainer/VBoxContainer" unique_id=70254427]
 layout_mode = 2
+
+[node name="ScouterName2" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer" unique_id=1545591275]
+layout_mode = 2
+size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 35
-text = "Match 103"
+text = "Match"
 horizontal_alignment = 1
+
+[node name="SpinBox" type="SpinBox" parent="MarginContainer/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer" unique_id=1417361320]
+layout_mode = 2
+theme = SubResource("Theme_opdbr")
+min_value = 1.0
+value = 1.0
+alignment = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/PanelContainer/VBoxContainer" unique_id=196305464]
 layout_mode = 2
@@ -68,9 +92,12 @@ horizontal_alignment = 1
 
 [node name="ScouterName" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/VBoxContainer/VBoxContainer" unique_id=1504353762]
 layout_mode = 2
+theme_override_constants/line_spacing = -16
+theme_override_fonts/font = SubResource("FontVariation_aagap")
 theme_override_font_sizes/font_size = 35
-text = "Aiden Still"
+text = "Aiden Still asdsadasdadadsasd"
 horizontal_alignment = 1
+autowrap_mode = 3
 
 [node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/VBoxContainer/VBoxContainer" unique_id=1779020888]
 layout_mode = 2
@@ -120,7 +147,6 @@ layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/PanelContainer2" unique_id=1207826004]
 layout_mode = 2
-size_flags_horizontal = 4
 size_flags_vertical = 4
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer2/VBoxContainer" unique_id=1377294024]
@@ -135,5 +161,12 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 76
 text = "START"
 
+[node name="NoShow" type="Button" parent="MarginContainer/VBoxContainer/PanelContainer2/VBoxContainer" unique_id=959699926]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "No Show"
+
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/SpinBox" to="." method="_on_spin_box_value_changed"]
 [connection signal="toggled" from="MarginContainer/VBoxContainer/PanelContainer/VBoxContainer/CheckBox" to="." method="_on_check_box_toggled"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/PanelContainer2/VBoxContainer/Button" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/PanelContainer2/VBoxContainer/NoShow" to="." method="_on_no_show_pressed"]
