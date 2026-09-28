@@ -1,6 +1,7 @@
 [
 	{
 		"event": "ORSAL",
+		"event_name": "Oregon State Fair",
 		"rotations": [
 			{ 
 				"red_1": "Aarna",
@@ -24,7 +25,7 @@
 				"red_3": "Max G",
 				"blue_1": "Meri",
 				"blue_2": "Anders",
-				"blue_3": "Anyone - Press Subbing",
+				"blue_3": "*",
 			}
 		]
 	},

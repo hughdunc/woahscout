@@ -6,7 +6,8 @@ var subbing = ""
 
 var current_match: int = 1
 var team_scouting: int = 0
-var current_event = ""
+var event = ""
+var event_name = ""
 
 const SAVE_PATH = "res://matches.json"
 
@@ -48,7 +49,8 @@ func load_matches() -> void:
 		matches = json.get_data()
 		if matches.size() > 0 and matches[0].has("rotations"):
 			rotations = matches[0]["rotations"]
-			current_event = matches[0]["event"]
+			event = matches[0]["event"]
+			event_name = matches[0]["event_name"]
 		print("Matches data loaded succesfully!")
 	else:
 		print("JSON Parse Error: ", json.get_error_message(), " at line ", json.get_error_line())
@@ -78,15 +80,15 @@ func save_config() -> void:
 	var file = FileAccess.open("user://config.json", FileAccess.WRITE)
 	if file:
 		file.store_string(json_string)
-		print("Matches saved successfully to: ", ProjectSettings.globalize_path("user://config.json"))
+		print("Config saved successfully to: ", ProjectSettings.globalize_path("user://config.json"))
 	else:
 		print("Failed to open file for writing.")
 
 func load_config() -> void:
 	# Check if the file actually exists before trying to read it
 	if not FileAccess.file_exists("user://config.json"):
-		Global.config = {"alliance_member": "red_1"}
-		Global.save_config()
+		config = {"alliance_member": "red_1", "current_match": 1}
+		save_config()
 		print("Made new config.")
 		return
 	
@@ -106,4 +108,4 @@ func load_config() -> void:
 
 
 func stats(ms):
-	statistics[current_match][team_scouting] = ms
+	statistics[current_match][Global.config["alliance_member"]] = ms

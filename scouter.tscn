@@ -23,7 +23,7 @@ _source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\">
 "
 base_scale = 2.0
 
-[node name="Scouter" type="Control" unique_id=1679196615 node_paths=PackedStringArray("match_num", "scouter_name", "matches_till_done", "team_num", "alliance_member", "subbing_checkbox", "subbing_lineedit")]
+[node name="Scouter" type="Control" unique_id=1679196615 node_paths=PackedStringArray("event", "match_num", "scouter_name", "matches_till_done", "team_num", "alliance_member", "subbing_checkbox", "subbing_lineedit")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -31,6 +31,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_7vf6e")
+event = NodePath("MarginContainer/VBoxContainer/PanelContainer/VBoxContainer/Event")
 match_num = NodePath("MarginContainer/VBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/SpinBox")
 scouter_name = NodePath("MarginContainer/VBoxContainer/PanelContainer/VBoxContainer/VBoxContainer/ScouterName")
 matches_till_done = NodePath("MarginContainer/VBoxContainer/PanelContainer/VBoxContainer/VBoxContainer/Label2")

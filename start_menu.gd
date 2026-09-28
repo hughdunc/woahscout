@@ -1,5 +1,6 @@
 extends Control
 
+@export var event: Label
 @export var match_num: SpinBox
 @export var scouter_name: Label
 @export var matches_till_done: Label
@@ -10,16 +11,19 @@ extends Control
 
 
 func _ready() -> void:
+	Global.load_config()
+	match_num.value = Global.config["current_match"]
 	get_match_data()
 
 func get_match_data():
 	Global.load_matches()
 	Global.load_config()
+	event.text = Global.event + " - " + Global.event_name
 	match_num.max_value = len(Global.matches) - 1
-	var match = int(match_num.value)
-	var num = Global.matches[match][Global.config["alliance_member"]]
+	var m = int(match_num.value)
+	var num = Global.matches[m][Global.config["alliance_member"]]
 	team_num.text = str(int(num))
-	scouter_name.text = Global.rotations[Global.matches[match]["rotation"] - 1][Global.config["alliance_member"]]
+	scouter_name.text = Global.rotations[Global.matches[m]["rotation"] - 1][Global.config["alliance_member"]]
 	if Global.config["alliance_member"].begins_with("blue"):
 		team_num.add_theme_color_override("font_color", Color("53a1f0"))
 	else:
@@ -34,6 +38,8 @@ func get_match_data():
 
 	var left = Global.get_matches_left_in_rotation(int(match_num.value))
 	matches_till_done.text = str(left) + " match" + ("" if left == 1 else "es") + " until done scouting"
+	Global.config["current_match"] = m
+	Global.save_config()
 
 
 

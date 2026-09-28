@@ -106,6 +106,7 @@ var stats = {
 		"defended": 0.0,
 		"shuttled": 0,
 		"scored": 0,
+		"first_shift": false
 	},
 	MatchMenu.BLUE_SHIFT_1: {
 		"defended": 0.0,
@@ -337,7 +338,7 @@ func _ready():
 	accuracy.item_selected.connect(func(i): change_bool("accuracy", i))
 	comments.text_set.connect(func(t): change_bool("comments", t))
 	
-	done.pressed.connect(func(): print(stats))
+	done.pressed.connect(func(): Global.stats(stats))
 
 	manual_switch.pressed.connect(_switch_to_manual)
 	auto_switch.pressed.connect(_switch_to_auto_switch)
@@ -372,6 +373,7 @@ func update_points():
 
 func _blue_first():
 	first_shift = "blue"
+	stats[MatchMenu.TRANSITION]["first_shift"] = true
 	blue_gets_first.disabled = true
 	blue_got_first.disabled = true
 	red_gets_first.disabled = false
@@ -384,6 +386,7 @@ func _blue_first():
 
 func _red_first():
 	first_shift = "red"
+	stats[MatchMenu.TRANSITION]["first_shift"] = false
 	blue_gets_first.disabled = false
 	blue_got_first.disabled = false
 	red_gets_first.disabled = true
@@ -477,3 +480,7 @@ func _process(delta):
 	if defending:
 		stats[current_menu]["defended"] += delta
 		defend_button.text = "HOLD WHILE DEFENDING\n" + format_time(ceil(stats[current_menu]["defended"]))
+
+func _done():
+	Global.stats(stats)
+	get_tree().change_scene_to_file("res://qr.tscn")

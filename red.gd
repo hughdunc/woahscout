@@ -107,6 +107,7 @@ var stats = {
 		"defended": 0.0,
 		"shuttled": 0,
 		"scored": 0,
+		"first_shift": false,
 	},
 	MatchMenu.RED_SHIFT_1: {
 		"defended": 0.0,
@@ -375,6 +376,7 @@ func update_points():
 
 func _blue_first():
 	first_shift = "blue"
+	stats[MatchMenu.TRANSITION]["first_shift"] = false
 	blue_gets_first.disabled = true
 	blue_got_first.disabled = true
 	red_gets_first.disabled = false
@@ -387,6 +389,7 @@ func _blue_first():
 
 func _red_first():
 	first_shift = "red"
+	stats[MatchMenu.TRANSITION]["first_shift"] = true
 	blue_gets_first.disabled = false
 	blue_got_first.disabled = false
 	red_gets_first.disabled = true
