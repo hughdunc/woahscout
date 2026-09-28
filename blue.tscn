@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://ckoh88nog44yj"]
 
 [ext_resource type="Script" uid="uid://bomxxhbf8xxp6" path="res://blue.gd" id="1_lbmgo"]
-[ext_resource type="FontFile" uid="uid://dm7ekpanhpagu" path="res://Ethnocentric-Regular.otf" id="2_f5o0q"]
+[ext_resource type="FontFile" uid="uid://dm7ekpanhpagu" path="res://Ethnocentric.otf" id="2_f5o0q"]
 
 [sub_resource type="FontVariation" id="FontVariation_tpea4"]
 base_font = ExtResource("2_f5o0q")

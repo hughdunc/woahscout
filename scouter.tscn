@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cn3uift8rlp3o"]
 
 [ext_resource type="Script" uid="uid://dqh4v3b6242t3" path="res://start_menu.gd" id="1_7vf6e"]
-[ext_resource type="FontFile" uid="uid://dm7ekpanhpagu" path="res://Ethnocentric-Regular.otf" id="1_aagap"]
+[ext_resource type="FontFile" uid="uid://dm7ekpanhpagu" path="res://Ethnocentric.otf" id="1_aagap"]
 
 [sub_resource type="Theme" id="Theme_opdbr"]
 default_font_size = 35
@@ -64,7 +64,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_constants/separation = 8
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/VBoxContainer" unique_id=551406918]
+[node name="Event" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/VBoxContainer" unique_id=551406918]
 layout_mode = 2
 text = "ORSAL - Oregon State Fair"
 horizontal_alignment = 1
@@ -143,6 +143,7 @@ text = "Subbing"
 alignment = 1
 
 [node name="LineEdit" type="LineEdit" parent="MarginContainer/VBoxContainer/PanelContainer/VBoxContainer" unique_id=1313280605]
+visible = false
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 placeholder_text = "Enter Your Name..."

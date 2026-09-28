@@ -14,12 +14,12 @@ func _ready() -> void:
 
 func get_match_data():
 	Global.load_matches()
-	Global.load_rotations()
 	Global.load_config()
-	match_num.max_value = len(Global.matches)
-	var num = Global.matches[int(match_num.value - 1)][Global.config["alliance_member"]]
+	match_num.max_value = len(Global.matches) - 1
+	var match = int(match_num.value)
+	var num = Global.matches[match][Global.config["alliance_member"]]
 	team_num.text = str(int(num))
-	scouter_name.text = Global.rotations[Global.matches[int(match_num.value - 1)]["rotation"] - 1][Global.config["alliance_member"]]
+	scouter_name.text = Global.rotations[Global.matches[match]["rotation"] - 1][Global.config["alliance_member"]]
 	if Global.config["alliance_member"].begins_with("blue"):
 		team_num.add_theme_color_override("font_color", Color("53a1f0"))
 	else:
@@ -39,7 +39,7 @@ func get_match_data():
 
 func _on_start_pressed() -> void:
 	Global.current_match = int(match_num.value)
-	Global.team_scouting = int(Global.matches[int(match_num.value - 1)][Global.config["alliance_member"]])
+	Global.team_scouting = int(Global.matches[int(match_num.value)][Global.config["alliance_member"]])
 	if subbing_checkbox.button_pressed:
 		Global.subbing = subbing_lineedit.text
 	Global.load_config()

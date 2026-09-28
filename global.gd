@@ -6,7 +6,7 @@ var subbing = ""
 
 var current_match: int = 1
 var team_scouting: int = 0
-var current_event = "ORSAL"
+var current_event = ""
 
 const SAVE_PATH = "res://matches.json"
 
@@ -46,6 +46,9 @@ func load_matches() -> void:
 	
 	if error == OK:
 		matches = json.get_data()
+		if matches.size() > 0 and matches[0].has("rotations"):
+			rotations = matches[0]["rotations"]
+			current_event = matches[0]["event"]
 		print("Matches data loaded succesfully!")
 	else:
 		print("JSON Parse Error: ", json.get_error_message(), " at line ", json.get_error_line())
@@ -53,41 +56,20 @@ func load_matches() -> void:
 
 func get_matches_left_in_rotation(current_match_num: int) -> int:
 	load_matches()
-	if current_match_num > matches.size() or current_match_num < 1:
+	if current_match_num >= matches.size() or current_match_num < 1:
 		return 0
 		
-	var current_rot = matches[current_match_num - 1]["rotation"]
+	var current_rot = matches[current_match_num]["rotation"]
 	var count = 0
 	
 	# Look forward from the current match and count consecutive matches with the same rotation
-	for i in range(current_match_num - 1, matches.size()):
+	for i in range(current_match_num, matches.size()):
 		if matches[i]["rotation"] == current_rot:
 			count += 1
 		else:
 			break # Hit a different rotation, stop counting
 			
 	return count
-
-func load_rotations():
-	var rot_path = "res://rotations.json"
-	if not FileAccess.file_exists(rot_path):
-		print("No save file found.")
-		return
-	
-	# Open the file for reading
-	var file = FileAccess.open(rot_path, FileAccess.READ)
-	var json_string = file.get_as_text()
-	
-	# Parse the JSON string back into usable data
-	var json = JSON.new()
-	var error = json.parse(json_string)
-	
-	if error == OK:
-		rotations = json.get_data()
-		print("Rotations data loaded succesfully!")
-	else:
-		print("JSON Parse Error: ", json.get_error_message(), " at line ", json.get_error_line())
-
 
 
 func save_config() -> void:
