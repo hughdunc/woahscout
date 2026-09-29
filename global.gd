@@ -108,4 +108,4 @@ func load_config() -> void:
 
 
 func stats(ms):
-	statistics[current_match][Global.config["alliance_member"]] = ms
+	statistics.get_or_add(current_match, {})[Global.config["alliance_member"]] = ms

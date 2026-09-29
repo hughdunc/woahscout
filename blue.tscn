@@ -194,7 +194,7 @@ autowrap_mode = 3
 visible = false
 layout_mode = 2
 selected = 0
-item_count = 4
+item_count = 5
 popup/item_0/text = "No Climb"
 popup/item_0/id = 0
 popup/item_1/text = "L1 Climb"
@@ -203,6 +203,8 @@ popup/item_2/text = "L2 Climb"
 popup/item_2/id = 2
 popup/item_3/text = "L3 Climb"
 popup/item_3/id = 3
+popup/item_4/text = "Attempted"
+popup/item_4/id = 4
 
 [node name="AutoHBox" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Field/VBoxContainer/RedZone" unique_id=1048046834]
 visible = false
