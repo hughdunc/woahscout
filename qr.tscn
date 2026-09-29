@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://c6bk84ex7i1go"]
+
+[node name="QR" type="Control" unique_id=1650116994]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=326903791]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 12.0
+offset_top = 42.0
+offset_right = -12.0
+offset_bottom = -42.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=737063105]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer" unique_id=1753051923]
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="OptionButton" type="OptionButton" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1712476142]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+alignment = 1
+selected = 0
+item_count = 2
+popup/item_0/text = "Match 1"
+popup/item_0/id = 0
+popup/item_1/text = "Match 2"
+popup/item_1/id = 1
+
+[node name="Button" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1327452482]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Done"
