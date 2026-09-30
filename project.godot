@@ -18,13 +18,16 @@ config/icon="res://icon.svg"
 [autoload]
 
 Global="*uid://bfrwiw0uwo13b"
-QR="*uid://8koelfqc7fxu"
 
 [display]
 
 window/size/viewport_width=360
 window/size/viewport_height=640
 window/handheld/orientation=1
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/qr_code/plugin.cfg")
 
 [physics]
 

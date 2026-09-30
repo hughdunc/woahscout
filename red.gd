@@ -339,7 +339,7 @@ func _ready():
 	accuracy.item_selected.connect(func(i): change_bool("accuracy",i))
 	comments.text_set.connect(func(t): change_bool("comments", t))
 	
-	done.pressed.connect(func(): print(stats))
+	done.pressed.connect(_done)
 
 	
 	
@@ -488,3 +488,10 @@ func _process(delta):
 	if defending:
 		stats[current_menu]["defended"] += delta
 		defend_button.text = "HOLD WHILE DEFENDING\n" + format_time(ceil(stats[current_menu]["defended"]))
+
+
+func _done():
+	stats[MatchMenu.POST_GAME]["comments"] = comments.text
+	Global.stats(stats)
+	get_tree().change_scene_to_file("res://qr.tscn")
+	Global.current_match += 1

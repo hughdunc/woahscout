@@ -54,10 +54,10 @@ enum MatchMenu {
 	AUTO,
 	TRANSITION,
 	WHO_GOT_FIRST,
-	BLUE_SHIFT_1,
 	RED_SHIFT_1,
-	BLUE_SHIFT_2,
+	BLUE_SHIFT_1,
 	RED_SHIFT_2,
+	BLUE_SHIFT_2,
 	ENDGAME,
 	POST_GAME
 }
@@ -338,7 +338,7 @@ func _ready():
 	accuracy.item_selected.connect(func(i): change_bool("accuracy", i))
 	comments.text_set.connect(func(t): change_bool("comments", t))
 	
-	done.pressed.connect(func(): Global.stats(stats))
+	done.pressed.connect(_done)
 
 	manual_switch.pressed.connect(_switch_to_manual)
 	auto_switch.pressed.connect(_switch_to_auto_switch)
@@ -378,6 +378,7 @@ func _blue_first():
 	blue_got_first.disabled = true
 	red_gets_first.disabled = false
 	red_got_first.disabled = false
+	done.disabled = false
 	
 	if current_menu == MatchMenu.WHO_GOT_FIRST:
 		load_menu(MatchMenu.BLUE_SHIFT_1)
@@ -391,6 +392,7 @@ func _red_first():
 	blue_got_first.disabled = false
 	red_gets_first.disabled = true
 	red_got_first.disabled = true
+	done.disabled = false
 	
 	if current_menu == MatchMenu.WHO_GOT_FIRST:
 		load_menu(MatchMenu.RED_SHIFT_1)
@@ -482,5 +484,6 @@ func _process(delta):
 		defend_button.text = "HOLD WHILE DEFENDING\n" + format_time(ceil(stats[current_menu]["defended"]))
 
 func _done():
+	stats[MatchMenu.POST_GAME]["comments"] = comments.text
 	Global.stats(stats)
 	get_tree().change_scene_to_file("res://qr.tscn")

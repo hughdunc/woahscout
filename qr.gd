@@ -1,29 +1,46 @@
 extends Node
 
+@export var mn: SpinBox
+@export var amn: OptionButton
+@export var qrn: QRCodeRect
+
+
 enum MatchMenu {
 	AUTO,
 	TRANSITION,
 	WHO_GOT_FIRST,
-	BLUE_SHIFT_1,
 	RED_SHIFT_1,
-	BLUE_SHIFT_2,
+	BLUE_SHIFT_1,
 	RED_SHIFT_2,
+	BLUE_SHIFT_2,
 	ENDGAME,
 	POST_GAME
 }
 
-func woah_to_qrs(s, m): #stats, match number
-	var scouter = s[MatchMenu.POST_GAME]["scouter"]
+func _ready():
+	Global.load_config()
+	mn.value = Global.current_match - 1
+	match Global.config["alliance_member"]:
+		"red_1": amn.selected = 0
+		"red_2": amn.selected = 1
+		"red_3": amn.selected = 2
+		"blue_1": amn.selected = 3
+		"blue_2": amn.selected = 4
+		"blue_3": amn.selected = 5
+	make_qr()
+
+func woah_to_qrs(s, m, am): #stats, match number, alliance_member
+	var scouter = Global.rotations[Global.matches[m]["rotation"] - 1][am]
 	var match_number = m
 	var robot = ""
-	match Global.config["alliance_member"]:
+	match am:
 		"red_1": robot = "R1"
 		"red_2": robot = "R2"
 		"red_3": robot = "R3"
 		"blue_1": robot = "B1"
 		"blue_2": robot = "B2"
 		"blue_3": robot = "B3"
-	var team_num = Global.matches[m]["alliance_member"]
+	var team_num = int(Global.matches[m][am])
 	
 	
 	
@@ -37,12 +54,14 @@ func woah_to_qrs(s, m): #stats, match number
 	var shift = s[MatchMenu.TRANSITION]["first_shift"]
 	
 	
-	
-	if Global.config["alliance_member"].begins_with("red"):
-		var a1fuel = s[MatchMenu.RED_SHIFT_1]["scored"]
+	var a1fuel
+	var a1role
+	if am.begins_with("red"):
+		print(s[MatchMenu.RED_SHIFT_1])
+		a1fuel = s[MatchMenu.RED_SHIFT_1]["scored"]
 		var a1shut = s[MatchMenu.RED_SHIFT_1]["shuttled"] + s[MatchMenu.BLUE_SHIFT_1]["shuttled"] / 1.75 # should  be / 2 but this feels better
 		var a1def = s[MatchMenu.RED_SHIFT_1]["defended"] + s[MatchMenu.BLUE_SHIFT_1]["defended"] * 7.5 # 15 points stopped per 2 seconds
-		var a1role = "o"
+		a1role = "o"
 		if a1fuel < 10 and a1shut < 10 and a1def < 10:
 			a1role = "x"
 		else:
@@ -51,10 +70,10 @@ func woah_to_qrs(s, m): #stats, match number
 				a1shut: a1role = "l"
 				a1def: a1role = "d"
 	else:
-		var a1fuel = s[MatchMenu.BLUE_SHIFT_1]["scored"]
+		a1fuel = s[MatchMenu.BLUE_SHIFT_1]["scored"]
 		var a1shut = s[MatchMenu.RED_SHIFT_1]["shuttled"] + s[MatchMenu.BLUE_SHIFT_1]["shuttled"] / 1.75 # should  be / 2 but this feels better
 		var a1def = s[MatchMenu.RED_SHIFT_1]["defended"] + s[MatchMenu.BLUE_SHIFT_1]["defended"] * 7.5 # 15 points stopped per 2 seconds
-		var a1role = "o"
+		a1role = "o"
 		if a1fuel < 10 and a1shut < 10 and a1def < 10:
 			a1role = "x"
 		else:
@@ -65,12 +84,13 @@ func woah_to_qrs(s, m): #stats, match number
 	
 	
 	
-	
-	if Global.config["alliance_member"].begins_with("red"):
-		var a2fuel = s[MatchMenu.RED_SHIFT_1]["scored"]
+	var a2fuel
+	var a2role
+	if am.begins_with("red"):
+		a2fuel = s[MatchMenu.RED_SHIFT_1]["scored"]
 		var a2shut = s[MatchMenu.RED_SHIFT_1]["shuttled"] + s[MatchMenu.BLUE_SHIFT_1]["shuttled"] / 1.75 # should  be / 2 but this feels better
 		var a2def = s[MatchMenu.RED_SHIFT_1]["defended"] + s[MatchMenu.BLUE_SHIFT_1]["defended"] * 7.5 # 15 points stopped per 2 seconds
-		var a2role = "o"
+		a2role = "o"
 		if a2fuel < 10 and a2shut < 10 and a2def < 10:
 			a2role = "x"
 		else:
@@ -79,10 +99,10 @@ func woah_to_qrs(s, m): #stats, match number
 				a2shut: a2role = "l"
 				a2def: a2role = "d"
 	else:
-		var a2fuel = s[MatchMenu.BLUE_SHIFT_2]["scored"]
+		a2fuel = s[MatchMenu.BLUE_SHIFT_2]["scored"]
 		var a2shut = s[MatchMenu.RED_SHIFT_2]["shuttled"] + s[MatchMenu.BLUE_SHIFT_2]["shuttled"] / 1.75 # should  be / 2 but this feels better
 		var a2def = s[MatchMenu.RED_SHIFT_2]["defended"] + s[MatchMenu.BLUE_SHIFT_2]["defended"] * 7.5 # 15 points stopped per 2 seconds
-		var a2role = "o"
+		a2role = "o"
 		if a2fuel < 10 and a2shut < 10 and a2def < 10:
 			a2role = "x"
 		else:
@@ -106,7 +126,7 @@ func woah_to_qrs(s, m): #stats, match number
 	
 	var disabled = s[MatchMenu.POST_GAME]["robot_disabled"]
 	var aside = s[MatchMenu.POST_GAME]["side_climb"]
-	var rank = s[MatchMenu.POST_GAME]["alliance_rank"]
+	var arank = s[MatchMenu.POST_GAME]["alliance_rank"]
 	var sCon
 	match s[MatchMenu.POST_GAME]["scouting_confidence"]:
 		"Missed Much": sCon = -1
@@ -128,3 +148,54 @@ func woah_to_qrs(s, m): #stats, match number
 		3: dSkill = 0
 		4: dSkill = 0.5
 		5: dSkill = 1
+	var aSkill
+	match s[MatchMenu.POST_GAME]["accuracy"]:
+		0: aSkill = "x"
+		1: aSkill = -1
+		2: aSkill = -0.5
+		3: aSkill = 0
+		4: aSkill = 0.5
+		5: aSkill = 1
+	var comm = s[MatchMenu.POST_GAME]["comments"]
+	
+	var list_in_order = [scouter, match_number, robot, team_num, preloaded_8, afuel, aclimb, tfuel, shift, a1fuel, a1role, a2fuel, a2role, efuel, eclimb, disabled, aside, arank, sCon, drSkill, dSkill, aSkill, comm]
+	for x in list_in_order:
+		print(x)
+	var qrs_string = " ".join(list_in_order.map(str)) + "\n"
+	print(qrs_string)
+	return qrs_string
+
+
+
+func make_qr():
+	var am = amn.get_item_text(amn.selected).to_snake_case()
+	var key = int(mn.value)
+	print(str(key),am)
+
+	# 1. Safely retrieve the dictionary for the given mn.value key
+	var stats_group = Global.statistics.get(key)
+
+	# 2. Check if the group exists and contains the key 'am'
+	if stats_group is Dictionary and stats_group.has(am):
+		var stat_value = stats_group[am]
+		if stat_value != null:
+			var qrs_string = woah_to_qrs(stat_value, key, am)
+			qrn.data = qrs_string
+			qrn.show() # or qrn.visible = true
+			return
+
+	# 3. If any check fails, hide the QR code node
+	qrn.hide() # or qrn.visible = false
+
+
+
+func _on_option_button_item_selected(_s):
+	make_qr()
+
+
+func _on_spin_box_value_changed(value):
+	make_qr()
+
+
+func _on_button_pressed():
+	get_tree().change_scene_to_file("res://scouter.tscn")

@@ -66,3 +66,7 @@ func _on_spin_box_value_changed(value: float) -> void:
 func _on_no_show_pressed() -> void:
 	if subbing_lineedit.text == "config":
 		get_tree().change_scene_to_file("res://config.tscn")
+
+
+func _on_no_show_2_pressed():
+	get_tree().change_scene_to_file("res://qr.tscn")

@@ -23,15 +23,15 @@ base_scale = 2.0
 
 [sub_resource type="FontVariation" id="FontVariation_8rhti"]
 
-[sub_resource type="Theme" id="Theme_3vi8l"]
+[sub_resource type="Theme" id="Theme_lbmgo"]
 default_font = SubResource("FontVariation_8rhti")
 
-[sub_resource type="DPITexture" id="DPITexture_3vi8l"]
+[sub_resource type="DPITexture" id="DPITexture_f5o0q"]
 _source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\"><rect width=\"14\" height=\"14\" x=\"1\" y=\"1\" fill=\"#fff\" fill-opacity=\".75\" rx=\"2.333\"/><path fill=\"#1a1a1a\" d=\"m11.5 3.75-5.6 5.6-1.7-1.7-1.5 1.5 3.2 3.2 7.1-7.1z\"/></svg>
 "
 base_scale = 2.0
 
-[sub_resource type="DPITexture" id="DPITexture_8rhti"]
+[sub_resource type="DPITexture" id="DPITexture_u5ugf"]
 _source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\"><rect width=\"14\" height=\"14\" x=\"1\" y=\"1\" fill=\"#1a1a1a\" fill-opacity=\".5\" rx=\"2.333\"/></svg>
 "
 base_scale = 2.0
@@ -148,6 +148,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Field" type="PanelContainer" parent="MarginContainer/VBoxContainer" unique_id=692622311]
+visible = false
 layout_mode = 2
 size_flags_vertical = 3
 
@@ -537,47 +538,47 @@ theme_override_colors/font_disabled_color = Color(0.6016, 0.7651599, 0.94, 0.498
 theme_override_font_sizes/font_size = 64
 text = "BLUE"
 
-[node name="PostGame" type="PanelContainer" parent="MarginContainer/VBoxContainer" unique_id=310298840]
-visible = false
+[node name="PostGame" type="PanelContainer" parent="MarginContainer/VBoxContainer" unique_id=763474920]
 layout_mode = 2
 size_flags_vertical = 3
-theme = SubResource("Theme_3vi8l")
+theme = SubResource("Theme_lbmgo")
 
-[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer/PostGame" unique_id=1972097708]
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer/PostGame" unique_id=406505814]
 layout_mode = 2
 horizontal_scroll_mode = 0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/PostGame/ScrollContainer" unique_id=1521460833]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/PostGame/ScrollContainer" unique_id=2074315106]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme_override_constants/separation = 0
 
-[node name="RobotDisabled" type="CheckBox" parent="MarginContainer/VBoxContainer/PostGame/ScrollContainer/VBoxContainer" unique_id=534880844]
+[node name="RobotDisabled" type="CheckBox" parent="MarginContainer/VBoxContainer/PostGame/ScrollContainer/VBoxContainer" unique_id=1292172120]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
-theme_override_icons/checked = SubResource("DPITexture_3vi8l")
-theme_override_icons/unchecked = SubResource("DPITexture_8rhti")
+theme_override_icons/checked = SubResource("DPITexture_f5o0q")
+theme_override_icons/unchecked = SubResource("DPITexture_u5ugf")
 text = "Robot Disabled?"
 alignment = 1
 
-[node name="SideClimb" type="CheckBox" parent="MarginContainer/VBoxContainer/PostGame/ScrollContainer/VBoxContainer" unique_id=504100146]
+[node name="SideClimb" type="CheckBox" parent="MarginContainer/VBoxContainer/PostGame/ScrollContainer/VBoxContainer" unique_id=576429699]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
-theme_override_icons/checked = SubResource("DPITexture_3vi8l")
-theme_override_icons/unchecked = SubResource("DPITexture_8rhti")
+theme_override_icons/checked = SubResource("DPITexture_f5o0q")
+theme_override_icons/unchecked = SubResource("DPITexture_u5ugf")
 text = "Side Climb?"
 alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/PostGame/ScrollContainer/VBoxContainer" unique_id=1538752126]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/PostGame/ScrollContainer/VBoxContainer" unique_id=1684881789]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/PostGame/ScrollContainer/VBoxContainer/HBoxContainer" unique_id=284887808]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/PostGame/ScrollContainer/VBoxContainer/HBoxContainer" unique_id=1148330721]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 24
 text = "Alliance Rank"
 
-[node name="AllianceRank" type="OptionButton" parent="MarginContainer/VBoxContainer/PostGame/ScrollContainer/VBoxContainer/HBoxContainer" unique_id=1174418813]
+[node name="AllianceRank" type="OptionButton" parent="MarginContainer/VBoxContainer/PostGame/ScrollContainer/VBoxContainer/HBoxContainer" unique_id=250719122]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 32
@@ -590,25 +591,27 @@ popup/item_1/id = 1
 popup/item_2/text = "3"
 popup/item_2/id = 2
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer/PostGame/ScrollContainer/VBoxContainer" unique_id=1065986713]
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer/PostGame/ScrollContainer/VBoxContainer" unique_id=1416207458]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/PostGame/ScrollContainer/VBoxContainer/HBoxContainer2" unique_id=658665789]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/PostGame/ScrollContainer/VBoxContainer/HBoxContainer2" unique_id=1338120176]
 layout_mode = 2
-size_flags_horizontal = 3
+size_flags_horizontal = 6
+size_flags_vertical = 4
 theme_override_constants/separation = -14
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/PostGame/ScrollContainer/VBoxContainer/HBoxContainer2/VBoxContainer" unique_id=1964714646]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/PostGame/ScrollContainer/VBoxContainer/HBoxContainer2/VBoxContainer" unique_id=940046855]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 21
 text = "Confidence"
 
-[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/PostGame/ScrollContainer/VBoxContainer/HBoxContainer2/VBoxContainer" unique_id=765744284]
+[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/PostGame/ScrollContainer/VBoxContainer/HBoxContainer2/VBoxContainer" unique_id=1346929564]
 layout_mode = 2
+theme_override_font_sizes/font_size = 12
 text = "(how much you saw)"
 
-[node name="ScoutingConfidence" type="OptionButton" parent="MarginContainer/VBoxContainer/PostGame/ScrollContainer/VBoxContainer/HBoxContainer2" unique_id=871957766]
+[node name="ScoutingConfidence" type="OptionButton" parent="MarginContainer/VBoxContainer/PostGame/ScrollContainer/VBoxContainer/HBoxContainer2" unique_id=1723485663]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 32
@@ -621,22 +624,22 @@ popup/item_1/id = 1
 popup/item_2/text = "Caught All"
 popup/item_2/id = 2
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer/VBoxContainer/PostGame/ScrollContainer/VBoxContainer" unique_id=1676406366]
+[node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer/VBoxContainer/PostGame/ScrollContainer/VBoxContainer" unique_id=1253914576]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/PostGame/ScrollContainer/VBoxContainer/HBoxContainer3" unique_id=1816613020]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/PostGame/ScrollContainer/VBoxContainer/HBoxContainer3" unique_id=712428076]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 24
 text = "Driving"
 
-[node name="DriveSkill" type="OptionButton" parent="MarginContainer/VBoxContainer/PostGame/ScrollContainer/VBoxContainer/HBoxContainer3" unique_id=616273996]
+[node name="DriveSkill" type="OptionButton" parent="MarginContainer/VBoxContainer/PostGame/ScrollContainer/VBoxContainer/HBoxContainer3" unique_id=961549490]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 32
 selected = 0
 item_count = 6
-popup/item_0/text = "Not Observed"
+popup/item_0/text = "Didn't See"
 popup/item_0/id = 0
 popup/item_1/text = "Very Bad"
 popup/item_1/id = 1
@@ -649,22 +652,22 @@ popup/item_4/id = 4
 popup/item_5/text = "Amazing"
 popup/item_5/id = 5
 
-[node name="HBoxContainer4" type="HBoxContainer" parent="MarginContainer/VBoxContainer/PostGame/ScrollContainer/VBoxContainer" unique_id=946799073]
+[node name="HBoxContainer4" type="HBoxContainer" parent="MarginContainer/VBoxContainer/PostGame/ScrollContainer/VBoxContainer" unique_id=1642685281]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/PostGame/ScrollContainer/VBoxContainer/HBoxContainer4" unique_id=1547604808]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/PostGame/ScrollContainer/VBoxContainer/HBoxContainer4" unique_id=131329744]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 24
 text = "Defense"
 
-[node name="DefenseSkill" type="OptionButton" parent="MarginContainer/VBoxContainer/PostGame/ScrollContainer/VBoxContainer/HBoxContainer4" unique_id=1835404726]
+[node name="DefenseSkill" type="OptionButton" parent="MarginContainer/VBoxContainer/PostGame/ScrollContainer/VBoxContainer/HBoxContainer4" unique_id=1820904291]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 32
 selected = 0
 item_count = 6
-popup/item_0/text = "Not Observed"
+popup/item_0/text = "Didn't See"
 popup/item_0/id = 0
 popup/item_1/text = "Very Bad"
 popup/item_1/id = 1
@@ -677,31 +680,34 @@ popup/item_4/id = 4
 popup/item_5/text = "Amazing"
 popup/item_5/id = 5
 
-[node name="HBoxContainer5" type="HBoxContainer" parent="MarginContainer/VBoxContainer/PostGame/ScrollContainer/VBoxContainer" unique_id=2125710024]
+[node name="HBoxContainer5" type="HBoxContainer" parent="MarginContainer/VBoxContainer/PostGame/ScrollContainer/VBoxContainer" unique_id=792738662]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/PostGame/ScrollContainer/VBoxContainer/HBoxContainer5" unique_id=1614194]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/PostGame/ScrollContainer/VBoxContainer/HBoxContainer5" unique_id=198149322]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 4
 theme_override_constants/separation = -14
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/PostGame/ScrollContainer/VBoxContainer/HBoxContainer5/VBoxContainer" unique_id=1286633885]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/PostGame/ScrollContainer/VBoxContainer/HBoxContainer5/VBoxContainer" unique_id=1001345639]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 24
 text = "Accuracy"
 
-[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/PostGame/ScrollContainer/VBoxContainer/HBoxContainer5/VBoxContainer" unique_id=1332392998]
+[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/PostGame/ScrollContainer/VBoxContainer/HBoxContainer5/VBoxContainer" unique_id=280058470]
 layout_mode = 2
+theme_override_constants/line_spacing = -10
+theme_override_font_sizes/font_size = 12
 text = "(how much got in the hub)"
 
-[node name="Accuracy" type="OptionButton" parent="MarginContainer/VBoxContainer/PostGame/ScrollContainer/VBoxContainer/HBoxContainer5" unique_id=463045805]
+[node name="Accuracy" type="OptionButton" parent="MarginContainer/VBoxContainer/PostGame/ScrollContainer/VBoxContainer/HBoxContainer5" unique_id=118512609]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 32
 selected = 0
 item_count = 6
-popup/item_0/text = "Not Observed"
+popup/item_0/text = "Didn't See"
 popup/item_0/id = 0
 popup/item_1/text = "Very Bad"
 popup/item_1/id = 1
@@ -714,12 +720,12 @@ popup/item_4/id = 4
 popup/item_5/text = "Amazing"
 popup/item_5/id = 5
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/PostGame/ScrollContainer/VBoxContainer" unique_id=281682402]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/PostGame/ScrollContainer/VBoxContainer" unique_id=1238212428]
 layout_mode = 2
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 16
 text = "Comments (Required, do this!!)"
 
-[node name="Comments" type="TextEdit" parent="MarginContainer/VBoxContainer/PostGame/ScrollContainer/VBoxContainer" unique_id=856216536]
+[node name="Comments" type="TextEdit" parent="MarginContainer/VBoxContainer/PostGame/ScrollContainer/VBoxContainer" unique_id=1178753141]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/line_spacing = 0
@@ -727,10 +733,11 @@ theme_override_font_sizes/font_size = 24
 placeholder_text = "Be specific, what happened? What went good? What went wrong?"
 wrap_mode = 1
 
-[node name="Done" type="Button" parent="MarginContainer/VBoxContainer/PostGame/ScrollContainer/VBoxContainer" unique_id=1434954212]
+[node name="Done" type="Button" parent="MarginContainer/VBoxContainer/PostGame/ScrollContainer/VBoxContainer" unique_id=2082305417]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_f5o0q")
 theme_override_font_sizes/font_size = 32
+disabled = true
 text = "Done"
 
 [node name="Controls" type="PanelContainer" parent="MarginContainer/VBoxContainer" unique_id=1530453832]
@@ -776,7 +783,7 @@ text = " > "
 
 [node name="Button" type="Button" parent="MarginContainer/VBoxContainer/Controls" unique_id=1826591674]
 visible = false
-custom_minimum_size = Vector2(0, 53)
+custom_minimum_size = Vector2(0, 57)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.88, 0.88, 0.88, 0.49803922)
 theme_override_font_sizes/font_size = 20
